@@ -137,8 +137,8 @@ $sql_obat = "
       echo "<div class='table-container'>"; // Bungkus tabel dalam div untuk styling
       echo "<table class='obat-table'>"; // Gunakan kelas untuk styling tabel
       echo "<thead><tr>
-          <th>Waktu</th>
-          <th>Nama</th>
+          <th>Nama Obat</th>
+          <th>Tanggal Kadaluarsa</th>
           <th>Aksi</th>
       </tr></thead><tbody>";
 
