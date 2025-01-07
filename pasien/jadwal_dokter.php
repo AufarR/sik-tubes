@@ -1,11 +1,3 @@
-<?php
-// Selalu lempar user yg salah ataupun ga login
-session_start();
-if ($_SESSION['role'] != 'pasien') {
-    header('Location: /auth/login.php');
-}
-?>
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -15,8 +7,12 @@ if ($_SESSION['role'] != 'pasien') {
   <link rel="stylesheet" href="jadwal_dokter.css">
 </head>
 <body>
+  
   <header class="header">
-    <h1>Puskesmas Cinta Kasih Satu Hati</h1>
+    <div class="header-container">
+      <button class="btn-back" onclick="history.back()">← Back</button>
+      <h1>Puskesmas Cinta Kasih Satu Hati</h1>
+    </div>
   </header>
 
   <main class="main-content">

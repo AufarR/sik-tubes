@@ -1,104 +1,214 @@
 /* Global Styles */
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #FFFAF0; /* Latar belakang lembut */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-  }
-  
-  /* Header */
-  header {
-    text-align: center;
-    background-color: #FFA500; /* Oranye terang untuk header */
-    padding: 15px 0;
-    width: 100%;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  header h1 {
-    margin: 0;
-    color: white;
-    font-size: 1.6rem;
-    font-weight: bold;
-  }
-  
-  /* Form Container */
-  .main-content {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    width: 100%;
-    padding: 30px 20px;
-  }
-  
-  .form-container {
-    background-color: #FFE0B2; /* Warna oranye lembut */
-    padding: 25px 35px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 400px;
-  }
-  
-  .form-container h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #E65100; /* Oranye gelap */
-    font-size: 1.4rem;
-    font-weight: bold;
-  }
-  
-  /* Form Styles */
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #333;
-  }
-  
-  input[type="text"],
-  input[type="email"],
-  input[type="tel"],
-  input[type="date"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-    font-size: 1rem;
-  }
-  
-  input[type="text"]:focus,
-  input[type="email"]:focus,
-  input[type="tel"]:focus,
-  input[type="date"]:focus {
-    border-color: #FFA500; /* Fokus dengan warna oranye */
-    outline: none;
-    box-shadow: 0 0 5px rgba(255, 165, 0, 0.5);
-  }
-  
-  /* Button Styles */
-  .form-container .btn-submit {
-    display: block;
-    width: 100%;
-    padding: 12px;
-    background-color: #FFA500; /* Warna tombol oranye */
-    border: none;
-    border-radius: 5px;
-    color: white;
-    font-weight: bold;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .form-container .btn-submit:hover {
-    background-color: #FB8C00; /* Oranye gelap saat hover */
-  }
-  
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #FFFAF0; /* Latar belakang lembut */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Header */
+header {
+  text-align: center;
+  background-color: #FFA500; /* Oranye terang untuk header */
+  padding: 15px 0;
+  width: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  margin: 0;
+  color: white;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+/* Form Container */
+.main-content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  padding: 30px 20px;
+}
+
+.form-container {
+  background-color: #FFE0B2; /* Warna oranye lembut */
+  padding: 25px 35px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 400px;
+}
+
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #E65100; /* Oranye gelap */
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+/* Global Styles */
+body {
+margin: 0;
+font-family: Arial, sans-serif;
+background-color: #FFFAF0;
+display: flex;
+justify-content: center;
+align-items: center;
+min-height: 100vh;
+}
+
+header {
+text-align: center;
+background-color: #FFA500; /* Oranye untuk Edit */
+padding: 20px 0;
+width: 100%;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+margin: 0;
+color: white;
+font-size: 1.8rem;
+}
+
+/* Form Container */
+.form-section {
+background-color: #FAD7A0;
+padding: 30px 40px;
+border-radius: 10px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+width: 400px;
+}
+
+.form-section h2 {
+text-align: center;
+margin-bottom: 20px;
+color: #E65100; /* Oranye Gelap */
+}
+
+/* Form Styles */
+.form-group {
+margin-bottom: 15px;
+}
+
+label {
+display: block;
+margin-bottom: 5px;
+font-weight: bold;
+color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+select {
+width: 100%;
+padding: 10px;
+border: 1px solid #ccc;
+border-radius: 5px;
+box-sizing: border-box;
+}
+
+textarea {
+width: 100%;
+padding: 10px;
+border: 1px solid #ccc;
+border-radius: 5px;
+resize: none;
+box-sizing: border-box;
+}
+
+/* Button Group */
+.button-group {
+display: flex;
+justify-content: space-between;
+gap: 10px;
+}
+
+button {
+padding: 10px 20px;
+border: none;
+border-radius: 5px;
+font-size: 1rem;
+cursor: pointer;
+font-weight: bold;
+transition: background-color 0.3s ease;
+}
+
+/* Tombol Simpan */
+.btn-submit {
+background-color: #4CAF50; /* Hijau */
+color: white;
+}
+
+.btn-submit:hover {
+background-color: #45A049;
+}
+
+/* Tombol Batal */
+.btn-cancel {
+background-color: #F44336; /* Merah */
+color: white;
+}
+
+.btn-cancel:hover {
+background-color: #E53935;
+}
+
+
+/* Form Styles */
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="date"]:focus {
+  border-color: #FFA500; /* Fokus dengan warna oranye */
+  outline: none;
+  box-shadow: 0 0 5px rgba(255, 165, 0, 0.5);
+}
+
+/* Button Styles */
+.form-container .btn-submit {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background-color: #FFA500; /* Warna tombol oranye */
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-container .btn-submit:hover {
+  background-color: #FB8C00; /* Oranye gelap saat hover */
+}

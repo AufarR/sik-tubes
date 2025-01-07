@@ -1,11 +1,3 @@
-<?php
-// Selalu lempar user yg salah ataupun ga login
-session_start();
-if ($_SESSION['role'] != 'pasien') {
-    header('Location: /auth/login.php');
-}
-?>
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -16,7 +8,10 @@ if ($_SESSION['role'] != 'pasien') {
 </head>
 <body>
   <header class="header">
-    <h1>Puskesmas Cinta Kasih Satu Hati</h1>
+    <div class="header-container">
+      <button class="btn-back" onclick="history.back()">← Back</button>
+      <h1>Puskesmas Cinta Kasih Satu Hati</h1>
+    </div>
   </header>
 
   <main class="main-content">
@@ -58,7 +53,7 @@ if ($_SESSION['role'] != 'pasien') {
             <td>johndoe@example.com</td>
           </tr>
         </table>
-        <button class="btn-edit" onclick="location.href='edit_profile.php'">Edit</button>
+        <button class="btn-edit" onclick="location.href='edit_profile.html'">Edit</button>
       </div>
     </section>
   </main>

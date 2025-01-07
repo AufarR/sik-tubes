@@ -1,11 +1,3 @@
-<?php
-// Selalu lempar user yg salah ataupun ga login
-session_start();
-if ($_SESSION['role'] != 'farmasi') {
-    header('Location: /auth/login.php');
-}
-?>
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -20,19 +12,23 @@ if ($_SESSION['role'] != 'farmasi') {
   </header>
 
   <main class="main-content">
-    <form action="proses_tambah_obat.php" method="post" class="tambah-form">
-      <div class="form-group">
-        <label for="nama-obat">Nama Obat</label>
-        <input type="text" id="nama-obat" name="nama-obat" placeholder="Masukkan nama obat" required>
-      </div>
-      <div class="form-group">
-        <label for="kedaluarsa">Tanggal Kedaluarsa</label>
-        <input type="date" id="kedaluarsa" name="kedaluarsa" required>
-      </div>
-      <div class="form-group">
-        <button type="submit" class="btn-submit">Simpan</button>
-      </div>
-    </form>
+    <section class="form-section">
+      <h2>Tambah Obat</h2>
+      <form action="farmasi.html" method="post" class="tambah-form">
+        <div class="form-group">
+          <label for="nama-obat">Nama Obat</label>
+          <input type="text" id="nama-obat" name="nama-obat" placeholder="Masukkan nama obat" required>
+        </div>
+        <div class="form-group">
+          <label for="kedaluarsa">Tanggal Kedaluarsa</label>
+          <input type="date" id="kedaluarsa" name="kedaluarsa" required>
+        </div>
+        <div class="button-group">
+          <button type="submit" class="btn-submit">Simpan</button>
+          <button type="button" class="btn-cancel" onclick="window.history.back()">Batal</button>
+        </div>
+      </form>
+    </section>
   </main>
 </body>
 </html>

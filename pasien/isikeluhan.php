@@ -1,11 +1,3 @@
-<?php
-// Selalu lempar user yg salah ataupun ga login
-session_start();
-if ($_SESSION['role'] != 'pasien') {
-    header('Location: /auth/login.php');
-}
-?>
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -16,13 +8,16 @@ if ($_SESSION['role'] != 'pasien') {
 </head>
 <body>
   <header class="header">
-    <h1>Puskesmas Cinta Kasih Satu Hati</h1>
+    <div class="header-container">
+      <button class="btn-back" onclick="history.back()">← Back</button>
+      <h1>Puskesmas Cinta Kasih Satu Hati</h1>
+    </div>
   </header>
 
   <main class="main-content">
     <section class="keluhan-section">
       <h2>Isi Keluhan</h2>
-      <form action="proses_pendaftaran.php" method="post" class="keluhan-form">
+      <form action="keluhan_success.html" method="post" class="keluhan-form">
         <div class="form-group">
           <label for="keluhan">Isi Keluhan Anda</label>
           <textarea id="keluhan" name="keluhan" rows="5" placeholder="Tulis keluhan Anda di sini..." required></textarea>

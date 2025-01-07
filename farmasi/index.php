@@ -1,11 +1,3 @@
-<?php
-// Selalu lempar user yg salah ataupun ga login
-session_start();
-if ($_SESSION['role'] != 'farmasi') {
-    header('Location: /auth/login.php');
-}
-?>
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -16,12 +8,12 @@ if ($_SESSION['role'] != 'farmasi') {
   <script>
     // Fungsi untuk mengarahkan ke halaman tambah obat
     function tambahObat() {
-      window.location.href = "tambah_obat.php";
+      window.location.href = "tambah_obat.html";
     }
 
     // Fungsi untuk mengarahkan ke halaman edit obat
     function editObat(namaObat) {
-      const url = `edit_obat.php?obat=${encodeURIComponent(namaObat)}`;
+      const url = `edit_obat.html?obat=${encodeURIComponent(namaObat)}`;
       window.location.href = url;
     }
 
@@ -36,14 +28,22 @@ if ($_SESSION['role'] != 'farmasi') {
 
     // Fungsi untuk melihat daftar obat pasien
     function lihatResep(waktu, pasien) {
-      const url = `daftar_obat.php?time=${waktu}&patient=${pasien}`;
+      const url = `daftar_obat.html?time=${waktu}&patient=${pasien}`;
       window.location.href = url;
     }
   </script>
 </head>
 <body>
   <header class="header">
-    <h1>Cinta Kasih Satu Hati - Halaman Farmasi</h1>
+    <div class="header-container">
+      <div class="header-left">
+        <h1>Cinta Kasih Satu Hati</h1>
+      </div>
+      <div class="header-right">
+        <p class="user-info">Login sebagai: <strong>Farmasi</strong></p>
+        <button class="btn-logout" onclick="window.location.href='login.html'">Logout</button>
+      </div>
+    </div>
   </header>
 
   <main class="main-content">

@@ -1,11 +1,3 @@
-<?php
-// Selalu lempar user yg salah ataupun ga login
-session_start();
-if ($_SESSION['role'] != 'admin') {
-    header('Location: /auth/login.php');
-}
-?>
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -43,7 +35,7 @@ if ($_SESSION['role'] != 'admin') {
   <main class="main-content">
     <section class="form-section">
       <h2>Edit Data</h2>
-      <form action="proses_edit.php" method="post">
+      <form action="edit_success.html" method="post" class="edit-form">
         <div class="form-group">
           <label for="nama">Nama</label>
           <input type="text" id="nama" name="nama" placeholder="Masukkan Nama" required>
@@ -60,8 +52,9 @@ if ($_SESSION['role'] != 'admin') {
           <label for="email">Email</label>
           <input type="email" id="email" name="email" placeholder="Masukkan Email" required>
         </div>
-        <div class="form-group">
+        <div class="button-group">
           <button type="submit" class="btn-submit">Simpan</button>
+          <button type="button" class="btn-cancel" onclick="window.history.back()">Batal</button>
         </div>
       </form>
     </section>

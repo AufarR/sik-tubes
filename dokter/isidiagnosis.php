@@ -1,11 +1,3 @@
-<?php
-// Selalu lempar user yg salah ataupun ga login
-session_start();
-if ($_SESSION['role'] != 'dokter') {
-    header('Location: /auth/login.php');
-}
-?>
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -37,9 +29,9 @@ if ($_SESSION['role'] != 'dokter') {
       `;
     }
 
-    // Fungsi untuk membuka halaman riwayat dengan parameter
+    // Fungsi untuk membuka halaman riwayat.html dengan parameter
     function lihatRiwayat(date, time) {
-      const url = `riwayat.php?date=${date}&time=${time}`;
+      const url = `riwayat.html?date=${date}&time=${time}`;
       window.location.href = url;
     }
 
@@ -65,7 +57,10 @@ if ($_SESSION['role'] != 'dokter') {
 </head>
 <body>
   <header class="header">
-    <h1>Cinta Kasih Satu Hati - Isi Diagnosis</h1>
+    <div class="header-container">
+      <button class="btn-back" onclick="history.back()">← Back</button>
+      <h1>Cinta Kasih Satu Hati - Isi Diagnosis</h1>
+    </div>
   </header>
 
   <main class="main-content">
@@ -99,7 +94,7 @@ if ($_SESSION['role'] != 'dokter') {
     <!-- Form Diagnosis -->
     <section class="form-section">
       <h2>Form Diagnosis</h2>
-      <form action="proses_diagnosis.php" method="post" class="diagnosis-form">
+      <form action="diagnosis_success.html" method="post" class="diagnosis-form">
         <!-- Kode ICD -->
         <div class="form-group">
           <label for="kode-icd">Kode ICD (Diagnosis)</label>

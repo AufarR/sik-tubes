@@ -1,15 +1,3 @@
-<?php
-/*
-PENTING
-Sejauh ini masih belum terpakai ini page :v
-*/
-// Selalu lempar user yg salah ataupun ga login
-session_start();
-if ($_SESSION['role'] != 'pasien') {
-    header('Location: /auth/login.php');
-}
-?>
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -20,14 +8,17 @@ if ($_SESSION['role'] != 'pasien') {
 </head>
 <body>
   <header class="header">
-    <h1>Puskesmas Cinta Kasih Satu Hati</h1>
+    <div class="header-container">
+      <button class="btn-back" onclick="history.back()">← Back</button>
+      <h1>Puskesmas Cinta Kasih Satu Hati</h1>
+    </div>
   </header>
 
   <main class="main-content">
     <!-- Pendaftaran Pemeriksaan -->
     <section class="pendaftaran-section">
       <h2>Pendaftaran Pemeriksaan</h2>
-      <form class="pendaftaran-form" action="pendaftaran_success" method="post">
+      <form class="pendaftaran-form" action="pendaftaran_success.html" method="post">
         <div class="form-group">
           <label for="tanggal">Tanggal dan Waktu</label>
           <input type="datetime-local" id="tanggal" name="tanggal" required>
