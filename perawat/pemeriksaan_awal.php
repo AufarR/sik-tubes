@@ -18,20 +18,6 @@ if ($_SESSION['role'] != 'perawat') {
       const url = window.location.href;
       const params = new URLSearchParams(url.split('?')[1]);
       return params.get(name);
-    }
-
-    // Tampilkan data pasien saat halaman dimuat
-    window.onload = function () {
-      const date = getParameterByName('date');
-      const time = getParameterByName('time');
-      const patient = getParameterByName('patient');
-      const complaint = "Nyeri pada dada bagian kiri"; // Contoh data keluhan dari pasien
-
-      // Tampilkan informasi pasien di tabel
-      document.getElementById('nama-pasien').textContent = patient;
-      document.getElementById('tanggal-pemeriksaan').textContent = date;
-      document.getElementById('waktu-pemeriksaan').textContent = time;
-      document.getElementById('keluhan-pasien').textContent = complaint;
     };
   </script>
 </head>
@@ -45,22 +31,53 @@ if ($_SESSION['role'] != 'perawat') {
     <section class="info-section">
       <h2>Informasi Pasien</h2>
       <table class="info-table">
-        <tr>
-          <th>Nama Pasien</th>
-          <td id="nama-pasien"></td>
-        </tr>
-        <tr>
-          <th>Tanggal Pemeriksaan</th>
-          <td id="tanggal-pemeriksaan"></td>
-        </tr>
-        <tr>
-          <th>Waktu Pemeriksaan</th>
-          <td id="waktu-pemeriksaan"></td>
-        </tr>
-        <tr>
-          <th>Keluhan</th>
-          <td id="keluhan-pasien"></td>
-        </tr>
+<?php
+// Create connection
+include_once("../lib/connection.php");
+$conn = connectDB();
+$sql_pemeriksaan = "
+        SELECT *
+        FROM pemeriksaan
+        JOIN booking ON booking.id = pemeriksaan.bookingid
+        JOIN pasien ON pemeriksaan.pasienid = pasien.id
+        WHERE pemeriksaan.id = ?
+    ";
+    $stmt_pemeriksaan = $conn->prepare($sql_pemeriksaan);
+    $stmt_pemeriksaan->bind_param("i", $_GET['id']);
+    $stmt_pemeriksaan->execute();
+    $result_pemeriksaan = $stmt_pemeriksaan->get_result();
+
+    // Tampilkan data jika ada hasil
+    if ($result_pemeriksaan->num_rows > 0) {
+      echo "<div class='table-container'>"; // Bungkus tabel dalam div untuk styling
+      echo "<table class='info-table'>"; // Gunakan kelas untuk styling tabel
+      echo "<tbody>";
+
+      while ($row = $result_pemeriksaan->fetch_assoc()) {
+
+          // Tampilkan data dalam tabel
+          echo "<tr>
+                  <th>Tanggal dan Waktu</th>
+                  <td>".htmlspecialchars($row['tgl'].' '.$row['waktu'])."</td>
+                </tr>
+                <tr>
+                  <th>Nama Pasien</th>
+                  <td>".htmlspecialchars($row['nama'])."</td>
+                </tr>
+                <tr>
+                  <th>Keluhan</th>
+                  <td>".htmlspecialchars($row['keluhan'])."</td>
+                </tr>";
+      }
+
+      echo "</tbody></table></div>";
+    } else {
+        echo "<p>Data tidak ditemukan.</p>";
+    }
+
+// Tutup koneksi
+$conn->close()
+?>
       </table>
     </section>
 
@@ -70,7 +87,7 @@ if ($_SESSION['role'] != 'perawat') {
       <form action="proses_pemeriksaan_awal.php" method="post" class="pemeriksaan-form">
         <div class="form-group">
           <label for="tensi">Tensi (mmHg)</label>
-          <input type="text" id="tensi" name="tensi" placeholder="Masukkan dalam mmHg" required>
+          <input type="text" id="tensi" name="tensi" placeholder="Masukkan dalam mmHg (Contoh: 120/80)" required>
         </div>
         <div class="form-group">
           <label for="heart-rate">Heart Rate (bpm)</label>
