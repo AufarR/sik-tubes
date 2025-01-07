@@ -23,7 +23,7 @@ if ($_SESSION['role'] != 'perawat') {
 </head>
 <body>
   <header class="header">
-  <h1>Puskesmas Cinta Kasih Satu Hati</h1>
+  <h1>Puskesmas Cinta Kasih Satu Hati - Halaman Perawat</h1>
     <div class="header-buttons">
       <button class="btn-logout" onclick="location.href='/auth/logout.php'">Logout</button>
     </div>
