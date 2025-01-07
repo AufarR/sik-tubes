@@ -13,15 +13,19 @@ if ($_SESSION['role'] != 'farmasi') {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tambah Obat</title>
   <link rel="stylesheet" href="edit_obat.css">
+  <link rel="stylesheet" href="farmasi.css">
 </head>
 <body>
-  <header class="header">
-    <h1>Cinta Kasih Satu Hati - Tambah Obat</h1>
+<header class="header">
+    <h1>Puskesma Cinta Kasih Satu Hati</h1>
+    <div class="header-buttons">
+      <button class="btn-profile" onclick="history.back()">Back</button>
+      <button class="btn-logout" onclick="location.href='/auth/logout.php'">Logout</button>
+    </div>
   </header>
 
   <main class="main-content">
-    <section class="form-section">
-      <h2>Tambah Obat</h2>
+    <h2>Tambah Obat</h2>
       <form action="proses_tambah_obat.php" method="post" class="edit-form">
         <div class="form-group">
           <label for="nama-obat">Nama Obat</label>
