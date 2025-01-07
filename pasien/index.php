@@ -15,8 +15,8 @@ if ($_SESSION['role'] != 'pasien') {
   <link rel="stylesheet" href="pasien.css">
   <script>
     // Fungsi untuk membuka halaman riwayat dengan parameter
-    function showDetail(date, time) {
-      const url = `riwayat.php?date=${date}&time=${time}`;
+    function showDetail(id) {
+      const url = `riwayat.php?id=${id}`;
       window.location.href = url;
     }
   </script>
