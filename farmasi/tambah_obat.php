@@ -12,7 +12,7 @@ if ($_SESSION['role'] != 'farmasi') {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tambah Obat</title>
-  <link rel="stylesheet" href="tambah_obat.css">
+  <link rel="stylesheet" href="edit_obat.css">
 </head>
 <body>
   <header class="header">
@@ -22,7 +22,7 @@ if ($_SESSION['role'] != 'farmasi') {
   <main class="main-content">
     <section class="form-section">
       <h2>Tambah Obat</h2>
-      <form action="proses_tambah_obat.php" method="post" class="tambah-form">
+      <form action="proses_tambah_obat.php" method="post" class="edit-form">
         <div class="form-group">
           <label for="nama-obat">Nama Obat</label>
           <input type="text" id="nama-obat" name="nama-obat" placeholder="Masukkan nama obat" required>
