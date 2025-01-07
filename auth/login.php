@@ -29,7 +29,7 @@ if (isset($_SESSION['username'])) {
 <body>
   <div class="login-container">
     <h1>Puskesmas Cinta Kasih Satu Hati</h1>
-    <form class="login-form" action="dashboard" method="post">
+    <form class="login-form" action="proses_login.php" method="post">
       <div class="form-group">
         <label for="email">Email</label>
         <input type="email" id="email" name="email" placeholder="Masukkan email" required>
