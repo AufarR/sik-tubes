@@ -1,3 +1,9 @@
+<!-- Nnti di sini kayanya tambahin jg kek redirect gitu sesuai role usernya.
+ Jadi user dr homepage pasti lanjut ke login.
+ Setelah itu,
+     kalau belum login, tampilin login as usual.
+     kalau udah login, lgsg redirect ke halaman sesuai usernya.
+ -->
 <!DOCTYPE html>
 <html lang="id">
 <head>
