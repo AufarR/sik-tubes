@@ -35,154 +35,205 @@ if ($_SESSION['role'] != 'admin') {
 </head>
 <body>
   <header class="header">
-    <h1>Cinta Kasih Satu Hati - Admin Panel</h1>
+  <h1>Puskesma Cinta Kasih Satu Hati</h1>
+    <div class="header-buttons">
+      <button class="btn-logout" onclick="location.href='/auth/logout.php'">Logout</button>
+    </div>
   </header>
 
   <main class="main-content">
     <!-- List Pasien -->
     <section class="list-section">
       <h2>List Pasien</h2>
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th>Nama</th>
-            <th>Tanggal Lahir</th>
-            <th>NIK</th>
-            <th>Aksi</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Budi Santoso</td>
-            <td>1990-01-15</td>
-            <td>1234567890123456</td>
-            <td>
-              <button class="btn-hapus" onclick="hapusData('Pasien', 'Budi Santoso')">Hapus</button>
-            </td>
-          </tr>
-          <tr>
-            <td>Siti Aminah</td>
-            <td>1985-06-12</td>
-            <td>2345678901234567</td>
-            <td>
-              <button class="btn-hapus" onclick="hapusData('Pasien', 'Siti Aminah')">Hapus</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+
+<?php
+// Create connection
+include_once("../lib/connection.php");
+$conn = connectDB();
+$sql_pasien = "
+        SELECT *
+        FROM pasien
+    ";
+    $stmt_pasien = $conn->prepare($sql_pasien);
+    $stmt_pasien->execute();
+    $result_pasien = $stmt_pasien->get_result();
+
+    // Tampilkan data jika ada hasil
+    if ($result_pasien->num_rows > 0) {
+      echo "<div class='table-container'>"; // Bungkus tabel dalam div untuk styling
+      echo "<table class='data-table'>"; // Gunakan kelas untuk styling tabel
+      echo "<thead><tr>
+          <th>Nama</th>
+          <th>Tanggal Lahir</th>
+          <th>NIK</th>
+          <th>Aksi</th>
+      </tr></thead><tbody>";
+
+      while ($row = $result_pasien->fetch_assoc()) {
+
+          // Tampilkan data dalam tabel
+          echo "<tr>
+              <td>{$row['nama']}</td>
+              <td>{$row['tgl_lahir']}</td>
+              <td>{$row['nik']}</td>
+              <td>
+                  <button onclick=\"hapusdata({$row['id']})\" class='btn-hapus'>Hapus</button>
+              </td>
+          </tr>";
+      }
+
+      echo "</tbody></table></div>";
+    } else {
+        echo "<p>Data tidak ditemukan.</p>";
+    }
+?>
     </section>
 
     <!-- List Dokter -->
     <section class="list-section">
       <h2>List Dokter</h2>
-      <table class="data-table">
-        <thead>
-          <tr>
+      <?php
+// Create connection
+include_once("../lib/connection.php");
+$conn = connectDB();
+$sql_dokter = "
+        SELECT *
+        FROM dokter
+    ";
+    $stmt_dokter = $conn->prepare($sql_dokter);
+    $stmt_dokter->execute();
+    $result_dokter = $stmt_dokter->get_result();
+
+    // Tampilkan data jika ada hasil
+    if ($result_dokter->num_rows > 0) {
+      echo "<div class='table-container'>"; // Bungkus tabel dalam div untuk styling
+      echo "<table class='data-table'>"; // Gunakan kelas untuk styling tabel
+      echo "<thead><tr>
             <th>Nama</th>
             <th>Nomor SIP</th>
             <th>Nomor Telepon</th>
             <th>Email</th>
             <th>Aksi</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Dr. Ahmad Fauzi</td>
-            <td>SIP-12345</td>
-            <td>081234567890</td>
-            <td>ahmad.fauzi@example.com</td>
-            <td>
-              <button class="btn-edit" onclick="editData('Dokter', 'Dr. Ahmad Fauzi', 'SIP-12345', '081234567890', 'ahmad.fauzi@example.com')">Edit</button>
-              <button class="btn-hapus" onclick="hapusData('Dokter', 'Dr. Ahmad Fauzi')">Hapus</button>
-            </td>
-          </tr>
-          <tr>
-            <td>Dr. Citra Lestari</td>
-            <td>SIP-54321</td>
-            <td>082345678901</td>
-            <td>citra.lestari@example.com</td>
-            <td>
-              <button class="btn-edit" onclick="editData('Dokter', 'Dr. Citra Lestari', 'SIP-54321', '082345678901', 'citra.lestari@example.com')">Edit</button>
-              <button class="btn-hapus" onclick="hapusData('Dokter', 'Dr. Citra Lestari')">Hapus</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      </tr></thead><tbody>";
+
+      while ($row = $result_dokter->fetch_assoc()) {
+
+          // Tampilkan data dalam tabel
+          echo "<tr>
+              <td>{$row['nama']}</td>
+              <td>{$row['sip']}</td>
+              <td>{$row['no_telp']}</td>
+              <td>{$row['email']}</td>
+              <td>
+                  <button onclick=\"hapusdata({$row['id']})\" class='btn-edit'>Edit</button>
+                  <button onclick=\"hapusdata({$row['id']})\" class='btn-hapus'>Hapus</button>
+              </td>
+          </tr>";
+      }
+
+      echo "</tbody></table></div>";
+    } else {
+        echo "<p>Data tidak ditemukan.</p>";
+    }
+?>
       <button class="btn-tambah" onclick="tambahData('Dokter')">Tambah</button>
     </section>
 
     <!-- List Perawat -->
     <section class="list-section">
       <h2>List Perawat</h2>
-      <table class="data-table">
-        <thead>
-          <tr>
+      <?php
+// Create connection
+include_once("../lib/connection.php");
+$conn = connectDB();
+$sql_perawat = "
+        SELECT *
+        FROM perawat
+    ";
+    $stmt_perawat = $conn->prepare($sql_perawat);
+    $stmt_perawat->execute();
+    $result_perawat = $stmt_perawat->get_result();
+
+    // Tampilkan data jika ada hasil
+    if ($result_perawat->num_rows > 0) {
+      echo "<div class='table-container'>"; // Bungkus tabel dalam div untuk styling
+      echo "<table class='data-table'>"; // Gunakan kelas untuk styling tabel
+      echo "<thead><tr>
             <th>Nama</th>
             <th>Nomor Telepon</th>
             <th>Email</th>
             <th>Aksi</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Linda Wati</td>
-            <td>081234567891</td>
-            <td>linda.wati@example.com</td>
-            <td>
-              <button class="btn-edit" onclick="editData('Perawat', 'Linda Wati', '', '081234567891', 'linda.wati@example.com')">Edit</button>
-              <button class="btn-hapus" onclick="hapusData('Perawat', 'Linda Wati')">Hapus</button>
-            </td>
-          </tr>
-          <tr>
-            <td>Rina Sari</td>
-            <td>082345678902</td>
-            <td>rina.sari@example.com</td>
-            <td>
-              <button class="btn-edit" onclick="editData('Perawat', 'Rina Sari', '', '082345678902', 'rina.sari@example.com')">Edit</button>
-              <button class="btn-hapus" onclick="hapusData('Perawat', 'Rina Sari')">Hapus</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      </tr></thead><tbody>";
+
+      while ($row = $result_perawat->fetch_assoc()) {
+
+          // Tampilkan data dalam tabel
+          echo "<tr>
+              <td>{$row['nama']}</td>
+              <td>{$row['no_telp']}</td>
+              <td>{$row['email']}</td>
+              <td>
+                  <button onclick=\"hapusdata({$row['id']})\" class='btn-edit'>Edit</button>
+                  <button onclick=\"hapusdata({$row['id']})\" class='btn-hapus'>Hapus</button>
+              </td>
+          </tr>";
+      }
+
+      echo "</tbody></table></div>";
+    } else {
+        echo "<p>Data tidak ditemukan.</p>";
+    }
+?>
       <button class="btn-tambah" onclick="tambahData('Perawat')">Tambah</button>
     </section>
 
     <!-- List Farmasi -->
     <section class="list-section">
       <h2>List Farmasi</h2>
-      <table class="data-table">
-        <thead>
-          <tr>
+      <?php
+// Create connection
+include_once("../lib/connection.php");
+$conn = connectDB();
+$sql_farmasi = "
+        SELECT *
+        FROM farmasi
+    ";
+    $stmt_farmasi = $conn->prepare($sql_farmasi);
+    $stmt_farmasi->execute();
+    $result_farmasi = $stmt_farmasi->get_result();
+
+    // Tampilkan data jika ada hasil
+    if ($result_farmasi->num_rows > 0) {
+      echo "<div class='table-container'>"; // Bungkus tabel dalam div untuk styling
+      echo "<table class='data-table'>"; // Gunakan kelas untuk styling tabel
+      echo "<thead><tr>
             <th>Nama</th>
             <th>Nomor STR</th>
             <th>Nomor Telepon</th>
             <th>Email</th>
             <th>Aksi</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Rahmat Saputra</td>
-            <td>STR-67890</td>
-            <td>081345678912</td>
-            <td>rahmat.saputra@example.com</td>
-            <td>
-              <button class="btn-edit" onclick="editData('Farmasi', 'Rahmat Saputra', 'STR-67890', '081345678912', 'rahmat.saputra@example.com')">Edit</button>
-              <button class="btn-hapus" onclick="hapusData('Farmasi', 'Rahmat Saputra')">Hapus</button>
-            </td>
-          </tr>
-          <tr>
-            <td>Dina Amelia</td>
-            <td>STR-09876</td>
-            <td>082456789013</td>
-            <td>dina.amelia@example.com</td>
-            <td>
-              <button class="btn-edit" onclick="editData('Farmasi', 'Dina Amelia', 'STR-09876', '082456789013', 'dina.amelia@example.com')">Edit</button>
-              <button class="btn-hapus" onclick="hapusData('Farmasi', 'Dina Amelia')">Hapus</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      </tr></thead><tbody>";
+
+      while ($row = $result_farmasi->fetch_assoc()) {
+
+          // Tampilkan data dalam tabel
+          echo "<tr>
+              <td>{$row['nama']}</td>
+              <td>{$row['str']}</td>
+              <td>{$row['no_telp']}</td>
+              <td>{$row['email']}</td>
+              <td>
+                  <button onclick=\"hapusdata({$row['id']})\" class='btn-edit'>Edit</button>
+                  <button onclick=\"hapusdata({$row['id']})\" class='btn-hapus'>Hapus</button>
+              </td>
+          </tr>";
+      }
+
+      echo "</tbody></table></div>";
+    } else {
+        echo "<p>Data tidak ditemukan.</p>";
+    }
+?>
       <button class="btn-tambah" onclick="tambahData('Farmasi')">Tambah</button>
     </section>
   </main>
