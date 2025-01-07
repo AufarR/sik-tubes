@@ -65,7 +65,25 @@ $conn->close();
                         </tr>
                         <tr>
                             <th>Status</th>
-                            <td><?php echo htmlspecialchars($data['status']); ?></td>
+                            <td>
+                          <?php 
+                            switch ($data['status']) {
+                              case 0:
+                                  $status_desc = "Pendaftaran diterima";
+                                  break;
+                              case 1:
+                                  $status_desc = "Menunggu dokter";
+                                  break;
+                              case 2:
+                                  $status_desc = "Selesai";
+                                  break;
+                              case 3:
+                                  $status_desc = "Dibatalkan";
+                                  break;
+                              default:
+                                  $status_desc = "Status tidak dikenal";
+                          }
+                            echo htmlspecialchars($status_desc); ?></td>
                         </tr>
                         <tr>
                             <th>Tinggi Badan</th>
