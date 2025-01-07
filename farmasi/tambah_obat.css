@@ -1,62 +1,94 @@
-/* tambah_obat.css / edit_obat.css */
-
 /* Global Styles */
 body {
+  margin: 0;
   font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
   background-color: #FFFAF0;
-  color: #333;
-}
-
-header {
-  background-color: #FFA07A;
-  color: white;
-  padding: 15px 20px;
-  text-align: center;
-}
-
-h1 {
-  margin: 0;
-  font-size: 1.8rem;
-}
-
-.main-content {
-  padding: 20px;
-  max-width: 500px;
-  margin: 0 auto;
-  background: #FFF5E1;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-form {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
 }
 
+/* Header Styles */
+header {
+  width: 100%;
+  text-align: center;
+  background-color: #4CAF50; /* Hijau untuk header */
+  padding: 15px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  margin: 0;
+  color: white;
+  font-size: 1.5rem;
+}
+
+/* Main Content */
+.main-content {
+  background-color: #FAD7A0;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  margin-top: 20px; /* Tambahkan jarak antara header dan konten utama */
+}
+
+.main-content .form-section h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #2E7D32; /* Hijau gelap */
+}
+
+/* Form Styles */
 .form-group {
   margin-bottom: 15px;
 }
 
 label {
-  font-weight: bold;
-  color: #D35400;
-  margin-bottom: 5px;
   display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
 }
 
-input[type="text"], input[type="date"] {
+input[type="text"],
+input[type="email"] {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid #ccc;
   border-radius: 5px;
   box-sizing: border-box;
 }
 
-input[type="text"]:focus, input[type="date"]:focus {
-  border-color: #FFA07A;
-  outline: none;
+input[type="text"]::placeholder,
+input[type="email"]::placeholder {
+  font-style: italic;
+  color: #aaa;
+}
+
+/* Button Styles */
+.btn-submit {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+  background-color: #45A049;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
 }
 
 button {
@@ -68,11 +100,145 @@ button {
   font-weight: bold;
 }
 
+/* Tombol Simpan */
 .btn-submit {
-  background-color: #FEA47F;
+  background-color: #4CAF50; /* Hijau */
   color: white;
 }
 
 .btn-submit:hover {
-  background-color: #FF7F50;
+  background-color: #45A049;
 }
+
+/* Tombol Batal */
+.btn-cancel {
+  background-color: #F44336; /* Merah */
+  color: white;
+}
+
+.btn-cancel:hover {
+  background-color: #E53935;
+}
+
+/* Global Styles */
+body {
+margin: 0;
+font-family: Arial, sans-serif;
+background-color: #FFFAF0;
+display: flex;
+flex-direction: column;
+align-items: center;
+min-height: 100vh;
+}
+
+/* Header Styles */
+header {
+width: 100%;
+text-align: center;
+background-color: #4CAF50; /* Hijau untuk header */
+padding: 15px 0;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+margin: 0;
+color: white;
+font-size: 1.5rem;
+}
+
+/* Main Content */
+.main-content {
+background-color: #FAD7A0;
+padding: 30px;
+border-radius: 10px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+width: 400px;
+margin-top: 20px; /* Tambahkan jarak antara header dan konten utama */
+}
+
+.main-content .form-section h2 {
+text-align: center;
+margin-bottom: 20px;
+color: #2E7D32; /* Hijau gelap */
+}
+
+/* Form Styles */
+.form-group {
+margin-bottom: 15px;
+}
+
+label {
+display: block;
+margin-bottom: 5px;
+font-weight: bold;
+color: #333;
+}
+
+input[type="text"],
+input[type="email"] {
+width: 100%;
+padding: 10px;
+border: 1px solid #ccc;
+border-radius: 5px;
+box-sizing: border-box;
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder {
+font-style: italic;
+color: #aaa;
+}
+
+/* Button Styles */
+.btn-submit {
+background-color: #4CAF50;
+color: white;
+border: none;
+padding: 10px 20px;
+border-radius: 5px;
+font-size: 1rem;
+font-weight: bold;
+cursor: pointer;
+width: 100%;
+transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+background-color: #45A049;
+}
+
+.button-group {
+display: flex;
+justify-content: space-between;
+gap: 10px;
+}
+
+button {
+padding: 10px 20px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+font-size: 1rem;
+font-weight: bold;
+}
+
+/* Tombol Simpan */
+.btn-submit {
+background-color: #4CAF50; /* Hijau */
+color: white;
+}
+
+.btn-submit:hover {
+background-color: #45A049;
+}
+
+/* Tombol Batal */
+.btn-cancel {
+background-color: #F44336; /* Merah */
+color: white;
+}
+
+.btn-cancel:hover {
+background-color: #E53935;
+}
+

@@ -43,7 +43,15 @@ if ($_SESSION['role'] != 'farmasi') {
 </head>
 <body>
   <header class="header">
-    <h1>Cinta Kasih Satu Hati - Halaman Farmasi</h1>
+    <div class="header-container">
+      <div class="header-left">
+        <h1>Cinta Kasih Satu Hati</h1>
+      </div>
+      <div class="header-right">
+        <p class="user-info">Login sebagai: <strong>Farmasi</strong></p>
+        <button class="btn-logout" onclick="window.location.href='/auth/logout.php'">Logout</button>
+      </div>
+    </div>
   </header>
 
   <main class="main-content">

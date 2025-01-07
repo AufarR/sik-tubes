@@ -33,9 +33,13 @@ $result = $stmt->get_result();
     <link rel="stylesheet" href="jadwal_dokter.css">
 </head>
 <body>
-<header class="header">
-    <h1>Puskesmas Cinta Kasih Satu Hati</h1>
-</header>
+  
+  <header class="header">
+    <div class="header-container">
+      <button class="btn-back" onclick="history.back()">← Back</button>
+      <h1>Puskesmas Cinta Kasih Satu Hati</h1>
+    </div>
+  </header>
 
 <main class="main-content">
     <section class="jadwal-section">

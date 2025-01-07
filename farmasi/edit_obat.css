@@ -1,6 +1,7 @@
 /* tambah_obat.css / edit_obat.css */
 
 /* Global Styles */
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -76,6 +77,44 @@ button {
 .btn-submit:hover {
   background-color: #FF7F50;
 }
+/* Button Group */
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+/* Tombol Simpan */
+.btn-submit {
+  background-color: #4CAF50; /* Hijau */
+  color: white;
+}
+
+.btn-submit:hover {
+  background-color: #45A049;
+}
+
+/* Tombol Batal */
+.btn-cancel {
+  background-color: #F44336; /* Merah */
+  color: white;
+}
+
+.btn-cancel:hover {
+  background-color: #E53935;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     table th, table td {

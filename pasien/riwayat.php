@@ -39,8 +39,11 @@ $conn->close();
 </head>
 <body>
     <header class="header">
-        <h1>Cinta Kasih Satu Hati</h1>
-    </header>
+        <div class="header-container">
+      <button class="btn-back" onclick="history.back()">← Back</button>
+      <h1>Puskesmas Cinta Kasih Satu Hati</h1>
+      </div>
+  </header>
     <main class="main-content">
         <section class="detail-section">
             <h2>Riwayat Pemeriksaan</h2>

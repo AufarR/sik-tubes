@@ -39,8 +39,9 @@ if ($_SESSION['role'] != 'farmasi') {
         <label for="kedaluarsa">Tanggal Kedaluarsa</label>
         <input type="date" id="kedaluarsa" name="kedaluarsa" required>
       </div>
-      <div class="form-group">
+      <div class="button-group">
         <button type="submit" class="btn-submit">Simpan</button>
+        <button type="button" class="btn-cancel" onclick="window.history.back()">Batal</button>
       </div>
     </form>
   </main>

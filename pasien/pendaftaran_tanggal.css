@@ -1,104 +1,133 @@
 /* Global Styles */
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #FFFAF0;
-    color: #333;
-  }
-  
-  header {
-    background-color: #f7f7f7;
-    padding: 10px 20px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  header h1 {
-    font-size: 1.5rem;
-    color: #D35400;
-  }
-  
-  /* Main Content */
-  .main-content {
-    padding: 20px;
-  }
-  
-  /* Pendaftaran Pemeriksaan */
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #FFFAF0;
+  color: #333;
+}
+
+header {
+  background-color: #f7f7f7;
+  padding: 10px 20px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  font-size: 1.5rem;
+  color: #D35400;
+}
+
+/* Main Content */
+.main-content {
+  padding: 20px;
+}
+
+/* Pendaftaran Pemeriksaan */
+.pendaftaran-section {
+  background-color: #FAD7A0;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 500px;
+  margin: 0 auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pendaftaran-section h2 {
+  text-align: center;
+  color: #D35400;
+  margin-bottom: 20px;
+}
+
+.pendaftaran-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+input[type="datetime-local"],
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: #333;
+  background-color: white;
+  box-sizing: border-box;
+  height: 44px; /* Samakan tinggi elemen */
+}
+
+input[type="datetime-local"]:focus,
+select:focus {
+  border-color: #FEA47F;
+  outline: none;
+  box-shadow: 0 0 5px rgba(254, 164, 127, 0.5);
+}
+
+button.btn-cari {
+  background-color: #FEA47F;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  text-align: center;
+}
+
+button.btn-cari:hover {
+  background-color: #FF7F50;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
   .pendaftaran-section {
-    background-color: #FAD7A0;
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 500px;
-    margin: 0 auto;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
   }
-  
-  .pendaftaran-section h2 {
-    text-align: center;
-    color: #D35400;
-    margin-bottom: 20px;
+
+  label, input, select {
+    font-size: 0.9rem;
   }
-  
-  .pendaftaran-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .form-group {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  label {
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #333;
-  }
-  
-  input[type="datetime-local"],
-  select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1rem;
-    color: #333;
-    background-color: white;
-    box-sizing: border-box;
-    height: 44px; /* Samakan tinggi elemen */
-  }
-  
-  input[type="datetime-local"]:focus,
-  select:focus {
-    border-color: #FEA47F;
-    outline: none;
-    box-shadow: 0 0 5px rgba(254, 164, 127, 0.5);
-  }
-  
-  button.btn-cari {
-    background-color: #FEA47F;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    text-align: center;
-  }
-  
-  button.btn-cari:hover {
-    background-color: #FF7F50;
-  }
-  
-  /* Responsiveness */
-  @media (max-width: 768px) {
-    .pendaftaran-section {
-      padding: 15px;
-    }
-  
-    label, input, select {
-      font-size: 0.9rem;
-    }
-  }
-  
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #FFA07A;
+  padding: 15px 20px;
+  color: white;
+}
+
+.header-container h1 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+.btn-back {
+  background-color: #F44336; /* Merah */
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn-back:hover {
+  background-color: #E53935;
+}
