@@ -20,8 +20,8 @@ if ($_SESSION['role'] != 'farmasi') {
     }
 
     // Fungsi untuk mengarahkan ke halaman edit obat
-    function editObat(namaObat) {
-      const url = `edit_obat.php?obat=${encodeURIComponent(namaObat)}`;
+    function editObat(id) {
+      const url = `edit_obat.php?id=${id}`;
       window.location.href = url;
     }
 
@@ -43,15 +43,7 @@ if ($_SESSION['role'] != 'farmasi') {
 </head>
 <body>
   <header class="header">
-    <div class="header-container">
-      <div class="header-left">
-        <h1>Cinta Kasih Satu Hati</h1>
-      </div>
-      <div class="header-right">
-        <p class="user-info">Login sebagai: <strong>Farmasi</strong></p>
-        <button class="btn-logout" onclick="window.location.href='/auth/logout.php'">Logout</button>
-      </div>
-    </div>
+    <h1>Cinta Kasih Satu Hati - Halaman Farmasi</h1>
   </header>
 
   <main class="main-content">
@@ -128,35 +120,49 @@ $conn->close()
     <!-- List Obat Puskesmas -->
     <section class="obat-section">
       <h2>List Obat Puskesmas</h2>
-      <table id="tabel-obat" class="obat-table">
-        <thead>
-          <tr>
-            <th>Nama Obat</th>
-            <th>Tanggal Kedaluarsa</th>
-            <th>Aksi</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Contoh Data Obat 1 -->
-          <tr>
-            <td>Paracetamol</td>
-            <td>2025-12-31</td>
-            <td>
-              <button class="btn-edit" onclick="editObat('Paracetamol')">Edit</button>
-              <button class="btn-hapus" onclick="hapusObat(this)">Hapus</button>
-            </td>
-          </tr>
-          <!-- Contoh Data Obat 2 -->
-          <tr>
-            <td>Amoxicillin</td>
-            <td>2024-08-15</td>
-            <td>
-              <button class="btn-edit" onclick="editObat('Amoxicillin')">Edit</button>
-              <button class="btn-hapus" onclick="hapusObat(this)">Hapus</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+<?php
+// Create connection
+include_once("../lib/connection.php");
+$conn = connectDB();
+$sql_obat = "
+        SELECT *
+        FROM obat
+    ";
+    $stmt_obat = $conn->prepare($sql_obat);
+    $stmt_obat->execute();
+    $result_obat = $stmt_obat->get_result();
+
+    // Tampilkan data jika ada hasil
+    if ($result_obat->num_rows > 0) {
+      echo "<div class='table-container'>"; // Bungkus tabel dalam div untuk styling
+      echo "<table class='obat-table'>"; // Gunakan kelas untuk styling tabel
+      echo "<thead><tr>
+          <th>Waktu</th>
+          <th>Nama</th>
+          <th>Aksi</th>
+      </tr></thead><tbody>";
+
+      while ($row = $result_obat->fetch_assoc()) {
+
+          // Tampilkan data dalam tabel
+          echo "<tr>
+              <td>{$row['nama']}</td>
+              <td>{$row['tgl_exp']}</td>
+              <td>
+                  <button onclick=\"editObat({$row['id']})\" class='btn-edit'>Edit</button>
+                  <button onclick=\"hapusObat({$row['id']})\" class='btn-hapus'>Hapus</button>
+              </td>
+          </tr>";
+      }
+
+      echo "</tbody></table></div>";
+    } else {
+        echo "<p>Data tidak ditemukan.</p>";
+    }
+
+// Tutup koneksi
+$conn->close()
+?>
       <button class="btn-tambah" onclick="tambahObat()">Tambah</button>
     </section>
   </main>
