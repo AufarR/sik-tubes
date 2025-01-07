@@ -13,14 +13,12 @@ if ($_SESSION['role'] != 'pasien') {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Edit Profile</title>
   <link rel="stylesheet" href="edit_profile.css">
+  <link rel="stylesheet" href="pasien.css">
 </head>
 <body>
   <header class="header">
-    <div class="header-container">
-      <h1>Puskesmas Cinta Kasih Satu Hati</h1>
-    </div>
+    <h1>Puskesmas Cinta Kasih Satu Hati</h1>
   </header>
-
   <main class="main-content">
     <section class="edit-profile-section">
       <h2>Edit Data Diri Pasien</h2>

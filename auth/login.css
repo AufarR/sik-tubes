@@ -2,7 +2,7 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #FFFAF0;
+  background: linear-gradient(to bottom right,#FFFAF0, #f0d4df) ;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,14 +11,14 @@ body {
 
 h1 {
   font-size: 1.5rem;
-  color: #D35400;
+  color: #c1195c;
   margin-bottom: 20px;
   text-align: center;
 }
 
 /* Login Container */
 .login-container {
-  background-color: #FAD7A0;
+  background-color: #f0d4df;
   padding: 30px;
   width: 300px;
   border-radius: 10px;
@@ -37,8 +37,12 @@ h1 {
 
 label {
   display: block;
-  margin-bottom: 5px;
-  color: #333;
+  margin-bottom: 8px; /* Sedikit lebih besar untuk spasi yang nyaman */
+  color: #555; /* Warna abu-abu lebih lembut */
+  font-family: 'Arial', sans-serif; /* Font sederhana dan bersih */
+  font-size: 16px; /* Ukuran font yang pas */
+  font-weight: 500; /* Memberikan kesan rapi tanpa terlalu tebal */
+  letter-spacing: 0.5px; /* Sedikit ruang antar huruf */
 }
 
 input[type="email"], input[type="password"] {
@@ -57,7 +61,7 @@ input[type="password"]::placeholder {
 
 /* Buttons */
 .btn-login {
-  background-color: #FEA47F;
+  background-color: #c82667;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -69,13 +73,13 @@ input[type="password"]::placeholder {
 }
 
 .btn-login:hover {
-  background-color: #FF7F50;
+  background-color: #760049;
 }
 
 .btn-register {
   background-color: transparent;
-  color: #D35400;
-  border: 1px solid #D35400;
+  color: #760049;
+  border: 1px solid #760049;
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
@@ -84,6 +88,6 @@ input[type="password"]::placeholder {
 }
 
 .btn-register:hover {
-  background-color: #D35400;
+  background-color: #760049;
   color: #fff;
 }

@@ -6,18 +6,6 @@ body {
   color: #333;
 }
 
-header {
-  background-color: #f7f7f7;
-  padding: 10px 20px;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-header h1 {
-  font-size: 1.5rem;
-  color: #D35400;
-}
-
 /* Main Content */
 .main-content {
   padding: 20px;
@@ -25,7 +13,7 @@ header h1 {
 
 /* Profile Section */
 .profile-section {
-  background-color: #FAD7A0;
+  background-color: #f0d4df;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -35,7 +23,7 @@ header h1 {
 
 .profile-section h2 {
   text-align: center;
-  color: #D35400;
+  color: #c1195c;
   margin-bottom: 20px;
 }
 
@@ -49,7 +37,7 @@ header h1 {
 .profile-table {
   width: 100%;
   border-collapse: collapse;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.7);
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -62,7 +50,7 @@ header h1 {
 }
 
 .profile-table th {
-  background-color: #FEA47F;
+  background-color: #c1195c;
   color: white;
   font-weight: bold;
 }
@@ -78,7 +66,7 @@ header h1 {
 /* Edit Button */
 .btn-edit {
   align-self: flex-end;
-  background-color: #FEA47F;
+  background-color: #c1195c;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -88,7 +76,7 @@ header h1 {
 }
 
 .btn-edit:hover {
-  background-color: #FF7F50;
+  background-color: #760049;
 }
 
 /* Responsiveness */
@@ -101,35 +89,5 @@ header h1 {
     font-size: 0.9rem;
     padding: 8px;
   }
-}
-
-.header-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #FFA07A;
-  padding: 15px 20px;
-  color: white;
-}
-
-.header-container h1 {
-  margin: 0;
-  font-size: 1.6rem;
-}
-
-.btn-back {
-  background-color: #F44336; /* Merah */
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  font-size: 1rem;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-
-.btn-back:hover {
-  background-color: #E53935;
 }
 
