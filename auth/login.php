@@ -1,9 +1,23 @@
-<!-- Nnti di sini kayanya tambahin jg kek redirect gitu sesuai role usernya.
- Jadi user dr homepage pasti lanjut ke login.
- Setelah itu,
-     kalau belum login, tampilin login as usual.
-     kalau udah login, lgsg redirect ke halaman sesuai usernya.
- -->
+<?php
+session_start();
+if (isset($_SESSION['username'])) {
+    if ($_SESSION['role'] == 'pasien') {
+        header('Location: /pasien');
+    } else if ($_SESSION['role'] == 'dokter') {
+        header('Location: /dokter');
+    } else if ($_SESSION['role'] == 'farmasi') {
+        header('Location: /farmasi');
+    } else if ($_SESSION['role'] == 'perawat') {
+        header('Location: /perawat');
+    } else if ($_SESSION['role'] == 'admin') {
+        header('Location: /admin');
+    }
+}
+/* 
+  Jika user sudah login, maka akan diarahkan ke halaman sesuai role user.
+  Jika belum login, maka akan menampilkan form login.
+*/
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
