@@ -4,6 +4,29 @@ session_start();
 if ($_SESSION['role'] != 'farmasi') {
     header('Location: /auth/login.php');
 }
+
+// Create connection
+include_once("../lib/connection.php");
+$conn = connectDB();
+
+// Ambil ID pemeriksaan dari parameter GET
+$id_pemeriksaan = $_GET['id'];
+
+// Ambil data riwayat pemeriksaan berdasarkan user ID
+$sql = "SELECT p.*, b.tgl, b.waktu, d.nama AS nama_dokter, pn.nama AS nama_pasien
+        FROM pemeriksaan p
+        JOIN booking b ON p.bookingid = b.id
+        JOIN dokter d ON p.dokterid = d.id
+        JOIN pasien pn ON p.pasienid = pn.id
+        WHERE p.id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $id_pemeriksaan);
+$stmt->execute();
+$result = $stmt->get_result();
+$data = $result->fetch_assoc();
+
+$stmt->close();
+$conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -22,23 +45,23 @@ if ($_SESSION['role'] != 'farmasi') {
   <main class="main-content">
     <!-- Informasi Pasien -->
     <section class="info-section">
-      <h2>Informasi Pasien</h2>
+      <h2>Informasi Pemeriksaan</h2>
       <table class="info-table">
         <tr>
+        <th>Tanggal dan Waktu</th>
+        <td><?php echo htmlspecialchars($data['tgl'] . ', ' . $data['waktu']); ?></td>
+        </tr>
+        <tr>
           <th>Nama Pasien</th>
-          <td>Budi Santoso</td>
+          <td><?php echo htmlspecialchars($data['nama_pasien']); ?></td>
         </tr>
         <tr>
-          <th>Waktu</th>
-          <td>08:00</td>
+          <th>Diagnosis</th>
+          <td><?php echo str_replace(";","<br>",htmlspecialchars($data['diagnosis'])); ?></td>
         </tr>
         <tr>
-          <th>Keluhan</th>
-          <td>Nyeri pada dada bagian kiri</td>
-        </tr>
-        <tr>
-          <th>Dokter</th>
-          <td>Dr. Ahmad Fauzi</td>
+          <th>Nama Dokter</th>
+          <td><?php echo htmlspecialchars($data['nama_dokter']); ?></td>
         </tr>
       </table>
     </section>
@@ -49,22 +72,12 @@ if ($_SESSION['role'] != 'farmasi') {
       <table class="obat-table">
         <thead>
           <tr>
-            <th>Nama Obat</th>
-            <th>Dosis</th>
+            <th>Nama Obat dan Dosis</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Paracetamol</td>
-            <td>500mg, 3x sehari</td>
-          </tr>
-          <tr>
-            <td>Amoxicillin</td>
-            <td>250mg, 2x sehari</td>
-          </tr>
-          <tr>
-            <td>Ibuprofen</td>
-            <td>200mg, jika nyeri</td>
+            <td><?php echo str_replace(";","</td></tr><tr><td>",htmlspecialchars($data['obat'])); ?></td>
           </tr>
         </tbody>
       </table>
