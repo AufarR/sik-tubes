@@ -6,9 +6,9 @@
   <title>Halaman Pasien</title>
   <link rel="stylesheet" href="pasien.css">
   <script>
-    // Fungsi untuk membuka halaman riwayat.html dengan parameter
+    // Fungsi untuk membuka halaman riwayat dengan parameter
     function showDetail(date, time) {
-      const url = `riwayat.html?date=${date}&time=${time}`;
+      const url = `riwayat?date=${date}&time=${time}`;
       window.location.href = url;
     }
   </script>
@@ -17,8 +17,8 @@
   <header class="header">
     <h1>Puskesmas Cinta Kasih Satu Hati</h1>
     <div class="header-buttons">
-      <button class="btn-profile" onclick="location.href='profile.html'">Profile</button>
-      <button class="btn-logout" onclick="location.href='login.html'">Logout</button>
+      <button class="btn-profile" onclick="location.href='profile'">Profile</button>
+      <button class="btn-logout" onclick="location.href='login'">Logout</button>
     </div>
   </header>
 
@@ -26,7 +26,7 @@
     <!-- Pendaftaran Pemeriksaan -->
     <section class="pendaftaran-section">
       <h2>Pendaftaran Pemeriksaan</h2>
-      <form class="pendaftaran-form" action="jadwal_dokter.html" method="get">
+      <form class="pendaftaran-form" action="jadwal_dokter" method="get">
         <div class="form-group">
           <label for="tanggal">Pilih Tanggal</label>
           <input type="date" id="tanggal" name="tanggal" required>

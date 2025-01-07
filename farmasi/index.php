@@ -8,12 +8,12 @@
   <script>
     // Fungsi untuk mengarahkan ke halaman tambah obat
     function tambahObat() {
-      window.location.href = "tambah_obat.html";
+      window.location.href = "tambah_obat";
     }
 
     // Fungsi untuk mengarahkan ke halaman edit obat
     function editObat(namaObat) {
-      const url = `edit_obat.html?obat=${encodeURIComponent(namaObat)}`;
+      const url = `edit_obat?obat=${encodeURIComponent(namaObat)}`;
       window.location.href = url;
     }
 
@@ -28,7 +28,7 @@
 
     // Fungsi untuk melihat daftar obat pasien
     function lihatResep(waktu, pasien) {
-      const url = `daftar_obat.html?time=${waktu}&patient=${pasien}`;
+      const url = `daftar_obat?time=${waktu}&patient=${pasien}`;
       window.location.href = url;
     }
   </script>

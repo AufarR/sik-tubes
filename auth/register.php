@@ -9,7 +9,7 @@
 <body>
   <div class="register-container">
     <h1>Puskesmas Cinta Kasih Satu Hati</h1>
-    <form class="register-form" action="success.html" method="post">
+    <form class="register-form" action="success" method="post">
       <div class="form-group">
         <label for="nik">NIK</label>
         <input type="text" id="nik" name="nik" placeholder="Masukkan NIK" required>
@@ -48,7 +48,7 @@
       </div>
       <button type="submit" class="btn-login">Daftar</button>
     </form>
-    <button class="btn-register" onclick="location.href='login.html'">Kembali ke Login</button>
+    <button class="btn-register" onclick="location.href='login'">Kembali ke Login</button>
   </div>
 </body>
 </html>

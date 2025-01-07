@@ -35,7 +35,7 @@
   <main class="main-content">
     <section class="form-section">
       <h2>Edit Data</h2>
-      <form action="edit_success.html" method="post">
+      <form action="edit_success" method="post">
         <div class="form-group">
           <label for="nama">Nama</label>
           <input type="text" id="nama" name="nama" placeholder="Masukkan Nama" required>

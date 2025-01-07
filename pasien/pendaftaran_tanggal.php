@@ -15,7 +15,7 @@
     <!-- Pendaftaran Pemeriksaan -->
     <section class="pendaftaran-section">
       <h2>Pendaftaran Pemeriksaan</h2>
-      <form class="pendaftaran-form" action="pendaftaran_success.html" method="post">
+      <form class="pendaftaran-form" action="pendaftaran_success" method="post">
         <div class="form-group">
           <label for="tanggal">Tanggal dan Waktu</label>
           <input type="datetime-local" id="tanggal" name="tanggal" required>

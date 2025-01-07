@@ -12,7 +12,7 @@
   </header>
 
   <main class="main-content">
-    <form action="farmasi.html" method="post" class="tambah-form">
+    <form action="farmasi" method="post" class="tambah-form">
       <div class="form-group">
         <label for="nama-obat">Nama Obat</label>
         <input type="text" id="nama-obat" name="nama-obat" placeholder="Masukkan nama obat" required>

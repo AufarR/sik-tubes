@@ -14,7 +14,7 @@
   <main class="main-content">
     <section class="form-section">
       <h2>Tambah Data</h2>
-      <form action="tambah_success.html" method="post">
+      <form action="tambah_success" method="post">
         <div class="form-group">
           <label for="nama">Nama</label>
           <input type="text" id="nama" name="nama" placeholder="Masukkan Nama" required>

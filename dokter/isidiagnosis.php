@@ -29,9 +29,9 @@
       `;
     }
 
-    // Fungsi untuk membuka halaman riwayat.html dengan parameter
+    // Fungsi untuk membuka halaman riwayat dengan parameter
     function lihatRiwayat(date, time) {
-      const url = `riwayat.html?date=${date}&time=${time}`;
+      const url = `riwayat?date=${date}&time=${time}`;
       window.location.href = url;
     }
 
@@ -91,7 +91,7 @@
     <!-- Form Diagnosis -->
     <section class="form-section">
       <h2>Form Diagnosis</h2>
-      <form action="diagnosis_success.html" method="post" class="diagnosis-form">
+      <form action="diagnosis_success" method="post" class="diagnosis-form">
         <!-- Kode ICD -->
         <div class="form-group">
           <label for="kode-icd">Kode ICD (Diagnosis)</label>

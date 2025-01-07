@@ -9,7 +9,7 @@
 <body>
   <div class="login-container">
     <h1>Puskesmas Cinta Kasih Satu Hati</h1>
-    <form class="login-form" action="dashboard.html" method="post">
+    <form class="login-form" action="dashboard" method="post">
       <div class="form-group">
         <label for="email">Email</label>
         <input type="email" id="email" name="email" placeholder="Masukkan email" required>
@@ -20,7 +20,7 @@
       </div>
       <button type="submit" class="btn-login">Login</button>
     </form>
-    <button class="btn-register" onclick="location.href='register.html'">Register</button>
+    <button class="btn-register" onclick="location.href='register'">Register</button>
   </div>
 </body>
 </html>
