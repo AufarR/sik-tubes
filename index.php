@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RSIA Grha Bunda</title>
+  <title>Puskesmas Cinta Kasih Satu Hati</title>
   <link rel="stylesheet" href="styles.css">
   <script>
     // Fungsi untuk mengarahkan ke halaman login
