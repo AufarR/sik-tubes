@@ -14,8 +14,44 @@ if ($_SESSION['role'] != 'dokter') {
   <title>Isi Diagnosis</title>
   <link rel="stylesheet" href="isidiagnosis.css">
   <script>
-    // Fungsi untuk menambah baris baru pada tabel obat
-    function tambahBaris() {
+    // Fungsi untuk menambah baris baru pada tabel diagnosis
+    function tambahBarisICD() {
+      const table = document.getElementById("tabel-ICD");
+      const row = table.insertRow();
+      const cell1 = row.insertCell(0);
+
+      // Kolom Nama ICD (Dropdown)
+      cell1.innerHTML = `
+        <select id="kode-icd" name="kode-icd" required>
+            <option value="" disabled selected>Pilih Kode ICD</option>
+<?php
+// Create connection
+include_once("../lib/connection.php");
+$conn = connectDB();
+
+// Ambil ID pasien dari tabel pasien berdasarkan email
+$sql = "SELECT kode, deskripsi from icd";
+$stmt = $conn->prepare($sql);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows > 0) {
+  while ($row = $result->fetch_assoc()) {
+    echo "<option value=\"{$row['kode']} {$row['deskripsi']}\">{$row['kode']} {$row['deskripsi']}</option>";
+  }
+    
+} else {
+    echo "<p>Data diagnosis tidak ditemukan.</p>";
+}
+
+// Tutup koneksi
+$conn->close()
+?>
+        </select>
+      `;
+    }
+
+    function tambahBarisObat() {
       const table = document.getElementById("tabel-obat");
       const row = table.insertRow();
       const cell1 = row.insertCell(0);
@@ -24,10 +60,30 @@ if ($_SESSION['role'] != 'dokter') {
       // Kolom Nama Obat (Dropdown)
       cell1.innerHTML = `
         <select class="dropdown-obat" required>
-          <option value="">Pilih Obat</option>
-          <option value="Paracetamol">Paracetamol</option>
-          <option value="Amoxicillin">Amoxicillin</option>
-          <option value="Ibuprofen">Ibuprofen</option>
+          <option value="" disabled selected>Pilih Obat</option>
+          <?php
+// Create connection
+include_once("../lib/connection.php");
+$conn = connectDB();
+
+// Ambil ID pasien dari tabel pasien berdasarkan email
+$sql = "SELECT nama from obat";
+$stmt = $conn->prepare($sql);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows > 0) {
+  while ($row = $result->fetch_assoc()) {
+    echo "<option value=\"{$row['nama']}\">{$row['nama']}</option>";
+  }
+    
+} else {
+    echo "<p>Data obat tidak ditemukan.</p>";
+}
+
+// Tutup koneksi
+$conn->close()
+?>
         </select>
       `;
 
@@ -38,8 +94,8 @@ if ($_SESSION['role'] != 'dokter') {
     }
 
     // Fungsi untuk membuka halaman riwayat dengan parameter
-    function lihatRiwayat(date, time) {
-      const url = `riwayat.php?date=${date}&time=${time}`;
+    function lihatRiwayat(id) {
+      const url = `riwayat.php?id=${id}`;
       window.location.href = url;
     }
 
@@ -50,17 +106,6 @@ if ($_SESSION['role'] != 'dokter') {
       return params.get(name);
     }
 
-    // Tampilkan informasi pasien saat halaman dimuat
-    window.onload = function () {
-      const time = getParameterByName('time') || "Tidak tersedia";
-      const patient = getParameterByName('patient') || "Tidak tersedia";
-      const complaint = "Nyeri pada dada bagian kiri"; // Contoh keluhan, ini dapat diambil dari backend jika tersedia
-
-      // Tampilkan informasi pasien
-      document.getElementById('info-nama-pasien').textContent = patient;
-      document.getElementById('info-waktu').textContent = time;
-      document.getElementById('info-keluhan').textContent = complaint;
-    };
   </script>
 </head>
 <body>
@@ -73,26 +118,76 @@ if ($_SESSION['role'] != 'dokter') {
     <section class="info-section">
       <h2>Informasi Pasien</h2>
       <table class="info-table">
-        <tr>
-          <th>Nama Pasien</th>
-          <td id="info-nama-pasien">Loading...</td>
-        </tr>
-        <tr>
-          <th>Waktu</th>
-          <td id="info-waktu">Loading...</td>
-        </tr>
-        <tr>
-          <th>Keluhan</th>
-          <td id="info-keluhan">Loading...</td>
-        </tr>
-        <tr>
-          <th>Heart Rate</th>
-          <td>72 bpm</td>
-        </tr>
-        <tr>
-          <th>Suhu</th>
-          <td>36.5°C</td>
-        </tr>
+      <?php
+
+// Create connection
+include_once("../lib/connection.php");
+$conn = connectDB();
+
+    // Query untuk mengambil tanggal, waktu, dan status dari tabel pemeriksaan dan booking
+    $sql_pemeriksaan = "
+        SELECT *
+        FROM pemeriksaan
+        JOIN booking ON booking.id = pemeriksaan.bookingid
+        JOIN pasien ON pemeriksaan.pasienid = pasien.id
+        WHERE pemeriksaan.id = ?
+    ";
+    $stmt_pemeriksaan = $conn->prepare($sql_pemeriksaan);
+    $stmt_pemeriksaan->bind_param("i", $_GET['id']);
+    $stmt_pemeriksaan->execute();
+    $result_pemeriksaan = $stmt_pemeriksaan->get_result();
+
+    // Tampilkan data jika ada hasil
+    if ($result_pemeriksaan->num_rows > 0) {
+      echo "<div class='table-container'>"; // Bungkus tabel dalam div untuk styling
+      echo "<table class='info-table'>"; // Gunakan kelas untuk styling tabel
+      echo "<tbody>";
+
+      while ($row = $result_pemeriksaan->fetch_assoc()) {
+
+          // Tampilkan data dalam tabel
+          echo "<tr>
+                  <th>Tanggal dan Waktu</th>
+                  <td>".htmlspecialchars($row['tgl'].' '.$row['waktu'])."</td>
+                </tr>
+                <tr>
+                  <th>Nama Pasien</th>
+                  <td>".htmlspecialchars($row['nama'])."</td>
+                </tr>
+                <tr>
+                  <th>Tensi</th>
+                  <td>".htmlspecialchars($row['sistol'].'/'.$row['diastol'])."</td>
+                </tr>
+                <tr>
+                  <th>Heart Rate</th>
+                  <td>".htmlspecialchars($row['heart_rate'])."</td>
+                </tr>
+                <tr>
+                  <th>Tinggi Badan</th>
+                  <td>".htmlspecialchars($row['tinggi'])."</td>
+                </tr>
+                <tr>
+                  <th>Berat</th>
+                  <td>".htmlspecialchars($row['berat'])."</td>
+                </tr>
+                <tr>
+                  <th>Suhu</th>
+                  <td>".htmlspecialchars($row['suhu'])."</td>
+                </tr>
+                <tr>
+                  <th>Keluhan</th>
+                  <td>".htmlspecialchars($row['keluhan'])."</td>
+                </tr>";
+      }
+
+      echo "</tbody></table></div>";
+    } else {
+        echo "<p>Data tidak ditemukan.</p>";
+    }
+
+// Tutup koneksi
+$conn->close()
+?>
       </table>
     </section>
 
@@ -102,44 +197,33 @@ if ($_SESSION['role'] != 'dokter') {
       <form action="proses_diagnosis.php" method="post" class="diagnosis-form">
         <!-- Kode ICD -->
         <div class="form-group">
-          <label for="kode-icd">Kode ICD (Diagnosis)</label>
-          <select id="kode-icd" name="kode-icd" required>
-            <option value="">Pilih Kode ICD</option>
-            <option value="A00">A00 - Cholera</option>
-            <option value="B01">B01 - Chickenpox</option>
-            <option value="C50">C50 - Breast Cancer</option>
-          </select>
+          <table id="tabel-ICD">
+            <tr>
+              <th><label for="kode-icd">Kode ICD (Diagnosis)</label></th>
+            </tr>
+          </table>
+          <button type="button" onclick="tambahBarisICD()" class="btn-tambah-baris">+ Tambah Diagnosis</button>
         </div>
 
         <!-- Obat dan Dosis -->
         <div class="form-group">
-          <label>Obat dan Dosis</label>
           <table id="tabel-obat">
             <tr>
               <th>Nama Obat</th>
               <th>Dosis</th>
             </tr>
-            <tr>
-              <td>
-                <select class="dropdown-obat" required>
-                  <option value="">Pilih Obat</option>
-                  <option value="Paracetamol">Paracetamol</option>
-                  <option value="Amoxicillin">Amoxicillin</option>
-                  <option value="Ibuprofen">Ibuprofen</option>
-                </select>
-              </td>
-              <td>
-                <input type="text" class="dosis-input" placeholder="Masukkan dosis" required>
-              </td>
-            </tr>
           </table>
-          <button type="button" onclick="tambahBaris()" class="btn-tambah-baris">+ Tambah Baris</button>
+          <button type="button" onclick="tambahBarisObat()" class="btn-tambah-baris">+ Tambah Obat</button>
         </div>
 
         <!-- Catatan Lainnya -->
         <div class="form-group">
-          <label for="catatan">Catatan Lainnya</label>
-          <textarea id="catatan" name="catatan" rows="4" placeholder="Masukkan catatan lainnya..."></textarea>
+          <table>
+            <tr><th><label for="catatan">Catatan Lainnya</label></th></tr>
+            <tr><td>
+              <textarea id="catatan" name="catatan" rows="4" placeholder="Masukkan catatan lainnya..."></textarea>
+            </td></tr>
+          </table>
         </div>
 
         <!-- Tombol Simpan -->
@@ -152,30 +236,75 @@ if ($_SESSION['role'] != 'dokter') {
     <!-- Riwayat Pemeriksaan -->
     <section class="riwayat-section">
       <h2>Riwayat Pemeriksaan</h2>
-      <table class="riwayat-table">
-        <thead>
-          <tr>
-            <th>Tanggal</th>
-            <th>Waktu</th>
-            <th>Status</th>
-            <th>Aksi</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>2025-01-02</td>
-            <td>08:00</td>
-            <td>Selesai</td>
-            <td><button class="btn-detail" onclick="lihatRiwayat('2025-01-02', '08:00')">Detail</button></td>
-          </tr>
-          <tr>
-            <td>2025-01-03</td>
-            <td>10:00</td>
-            <td>Selesai</td>
-            <td><button class="btn-detail" onclick="lihatRiwayat('2025-01-03', '10:00')">Detail</button></td>
-          </tr>
-        </tbody>
-      </table>
+      <?php
+
+// Create connection
+include_once("../lib/connection.php");
+$conn = connectDB();
+
+// Ambil ID pasien dari tabel pasien berdasarkan email
+$sql_pasien = "SELECT pasien.id FROM pasien
+JOIN pemeriksaan ON  pasien.id = pemeriksaan.pasienid 
+WHERE pemeriksaan.id = ?
+";
+$stmt_pasien = $conn->prepare($sql_pasien);
+$stmt_pasien->bind_param("s", $_GET["id"]);
+$stmt_pasien->execute();
+$result_pasien = $stmt_pasien->get_result();
+
+if ($result_pasien->num_rows > 0) {
+    $row_pasien = $result_pasien->fetch_assoc();
+    $pasien_id = $row_pasien['id'];
+
+    // Query untuk mengambil tanggal, waktu, dan status dari tabel pemeriksaan dan booking
+    $sql_pemeriksaan = "
+        SELECT pemeriksaan.id as id, dokter.nama as nama, booking.tgl as tgl, booking.waktu as waktu
+        FROM pemeriksaan
+        JOIN booking ON booking.id = pemeriksaan.bookingid
+        JOIN dokter ON pemeriksaan.dokterid = dokter.id
+        WHERE pemeriksaan.pasienid = ? AND
+        pemeriksaan.status = 2
+    ";
+    $stmt_pemeriksaan = $conn->prepare($sql_pemeriksaan);
+    $stmt_pemeriksaan->bind_param("i", $pasien_id);
+    $stmt_pemeriksaan->execute();
+    $result_pemeriksaan = $stmt_pemeriksaan->get_result();
+
+    // Tampilkan data jika ada hasil
+    if ($result_pemeriksaan->num_rows > 0) {
+      echo "<div class='table-container'>"; // Bungkus tabel dalam div untuk styling
+      echo "<table class='riwayat-table'>"; // Gunakan kelas untuk styling tabel
+      echo "<thead><tr>
+          <th>Tanggal</th>
+          <th>Waktu</th>
+          <th>Dokter</th>
+          <th>Aksi</th>
+      </tr></thead><tbody>";
+
+      while ($row = $result_pemeriksaan->fetch_assoc()) {
+
+          // Tampilkan data dalam tabel
+          echo "<tr>
+              <td>{$row['tgl']}</td>
+              <td>{$row['waktu']}</td>
+              <td>{$row['nama']}</td>
+              <td>
+                  <button onclick=\"lihatRiwayat({$row['id']})\" class='btn-detail'>Detail</a>
+              </td>
+          </tr>";
+      }
+
+      echo "</tbody></table></div>";
+    } else {
+        echo "<p>Tidak ada data riwayat pemeriksaan untuk pasien ini.</p>";
+    }
+} else {
+    echo "<p>Pasien tidak ditemukan.</p>";
+}
+
+// Tutup koneksi
+$conn->close()
+?>
     </section>
   </main>
 </body>

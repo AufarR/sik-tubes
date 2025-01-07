@@ -63,10 +63,6 @@ $conn->close();
                             <td><?php echo htmlspecialchars($data['heart_rate']); ?></td>
                         </tr>
                         <tr>
-                            <th>Status</th>
-                            <td><?php echo htmlspecialchars($data['status']); ?></td>
-                        </tr>
-                        <tr>
                             <th>Tinggi Badan</th>
                             <td><?php echo htmlspecialchars($data['tinggi']); ?></td>
                         </tr>
