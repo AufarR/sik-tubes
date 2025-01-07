@@ -1,0 +1,111 @@
+/* Reset Margin dan Padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Body */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #FFFAF0;
+    color: #333;
+  }
+  
+  /* Header */
+  .header {
+    background-color: #FFA07A;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .header h1 {
+    font-size: 1.5rem;
+  }
+  
+  /* Main Content */
+  .main-content {
+    margin: 40px auto;
+    padding: 20px;
+    max-width: 600px;
+    background-color: #FFF5E1;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Section Title */
+  .edit-profile-section h2 {
+    font-size: 1.5rem;
+    color: #D35400;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Form Styles */
+  .edit-profile-form .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .edit-profile-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .edit-profile-form input,
+  .edit-profile-form select,
+  .edit-profile-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  .edit-profile-form input:focus,
+  .edit-profile-form select:focus,
+  .edit-profile-form textarea:focus {
+    border-color: #FFA07A;
+    outline: none;
+  }
+  
+  /* Button Group */
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Tombol Simpan */
+  .btn-save {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .btn-save:hover {
+    background-color: #45A049;
+  }
+  
+  /* Tombol Batal */
+  .btn-cancel {
+    background-color: #F44336;
+    color: white;
+  }
+  
+  .btn-cancel:hover {
+    background-color: #E53935;
+  }
+  

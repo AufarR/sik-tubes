@@ -110,7 +110,10 @@ $conn->close()
 </head>
 <body>
   <header class="header">
-    <h1>Cinta Kasih Satu Hati - Isi Diagnosis</h1>
+    <div class="header-container">
+      <button class="btn-back" onclick="history.back()">← Back</button>
+      <h1>Cinta Kasih Satu Hati - Isi Diagnosis</h1>
+    </div>
   </header>
 
   <main class="main-content">

@@ -1,105 +1,135 @@
 /* Global Styles */
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #FFFAF0;
-    color: #333;
-  }
-  
-  header {
-    background-color: #f7f7f7;
-    padding: 10px 20px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  header h1 {
-    font-size: 1.5rem;
-    color: #D35400;
-  }
-  
-  /* Main Content */
-  .main-content {
-    padding: 20px;
-  }
-  
-  /* Profile Section */
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #FFFAF0;
+  color: #333;
+}
+
+header {
+  background-color: #f7f7f7;
+  padding: 10px 20px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  font-size: 1.5rem;
+  color: #D35400;
+}
+
+/* Main Content */
+.main-content {
+  padding: 20px;
+}
+
+/* Profile Section */
+.profile-section {
+  background-color: #FAD7A0;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.profile-section h2 {
+  text-align: center;
+  color: #D35400;
+  margin-bottom: 20px;
+}
+
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Profile Table */
+.profile-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-table th, .profile-table td {
+  padding: 10px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+}
+
+.profile-table th {
+  background-color: #FEA47F;
+  color: white;
+  font-weight: bold;
+}
+
+.profile-table tr:last-child td {
+  border-bottom: none; /* Hilangkan garis bawah pada baris terakhir */
+}
+
+.profile-table td {
+  color: #333;
+}
+
+/* Edit Button */
+.btn-edit {
+  align-self: flex-end;
+  background-color: #FEA47F;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-edit:hover {
+  background-color: #FF7F50;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
   .profile-section {
-    background-color: #FAD7A0;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 500px;
-    margin: 0 auto;
+    padding: 15px;
   }
-  
-  .profile-section h2 {
-    text-align: center;
-    color: #D35400;
-    margin-bottom: 20px;
-  }
-  
-  .profile-container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  /* Profile Table */
-  .profile-table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: white;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
+
   .profile-table th, .profile-table td {
-    padding: 10px 15px;
-    text-align: left;
-    border-bottom: 1px solid #ccc;
+    font-size: 0.9rem;
+    padding: 8px;
   }
-  
-  .profile-table th {
-    background-color: #FEA47F;
-    color: white;
-    font-weight: bold;
-  }
-  
-  .profile-table tr:last-child td {
-    border-bottom: none; /* Hilangkan garis bawah pada baris terakhir */
-  }
-  
-  .profile-table td {
-    color: #333;
-  }
-  
-  /* Edit Button */
-  .btn-edit {
-    align-self: flex-end;
-    background-color: #FEA47F;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  
-  .btn-edit:hover {
-    background-color: #FF7F50;
-  }
-  
-  /* Responsiveness */
-  @media (max-width: 768px) {
-    .profile-section {
-      padding: 15px;
-    }
-  
-    .profile-table th, .profile-table td {
-      font-size: 0.9rem;
-      padding: 8px;
-    }
-  }
-  
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #FFA07A;
+  padding: 15px 20px;
+  color: white;
+}
+
+.header-container h1 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+.btn-back {
+  background-color: #F44336; /* Merah */
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn-back:hover {
+  background-color: #E53935;
+}
+

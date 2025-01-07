@@ -77,3 +77,33 @@ input[type="text"], select {
   border-radius: 5px;
   border: 1px solid #ccc;
 }
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #FFA07A;
+  padding: 15px 20px;
+  color: white;
+}
+
+.header-container h1 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+.btn-back {
+  background-color: #F44336; /* Merah */
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn-back:hover {
+  background-color: #E53935;
+}
