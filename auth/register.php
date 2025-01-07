@@ -9,7 +9,7 @@
 <body>
   <div class="register-container">
     <h1>Puskesmas Cinta Kasih Satu Hati</h1>
-    <form class="register-form" action="success" method="post">
+    <form class="register-form" action="proses_register.php" method="post">
       <div class="form-group">
         <label for="nik">NIK</label>
         <input type="text" id="nik" name="nik" placeholder="Masukkan NIK" required>

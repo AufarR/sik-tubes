@@ -99,7 +99,7 @@ if ($_SESSION['role'] != 'dokter') {
     <!-- Form Diagnosis -->
     <section class="form-section">
       <h2>Form Diagnosis</h2>
-      <form action="diagnosis_success" method="post" class="diagnosis-form">
+      <form action="proses_diagnosis.php" method="post" class="diagnosis-form">
         <!-- Kode ICD -->
         <div class="form-group">
           <label for="kode-icd">Kode ICD (Diagnosis)</label>

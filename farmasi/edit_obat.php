@@ -30,7 +30,7 @@ if ($_SESSION['role'] != 'farmasi') {
   </header>
 
   <main class="main-content">
-    <form action="farmasi" method="post" class="edit-form">
+    <form action="proses_edit_obat.php" method="post" class="edit-form">
       <div class="form-group">
         <label for="nama-obat">Nama Obat</label>
         <input type="text" id="nama-obat" name="nama-obat" required>

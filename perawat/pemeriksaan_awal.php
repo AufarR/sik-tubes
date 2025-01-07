@@ -67,7 +67,7 @@ if ($_SESSION['role'] != 'perawat') {
     <!-- Form Pemeriksaan Awal -->
     <section class="form-section">
       <h2>Form Pemeriksaan Awal</h2>
-      <form action="pemeriksaan_success" method="post" class="pemeriksaan-form">
+      <form action="proses_pemeriksaan_awal.php" method="post" class="pemeriksaan-form">
         <div class="form-group">
           <label for="tensi">Tensi (mmHg)</label>
           <input type="text" id="tensi" name="tensi" placeholder="Masukkan dalam mmHg" required>

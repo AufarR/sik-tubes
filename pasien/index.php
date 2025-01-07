@@ -34,7 +34,7 @@ if ($_SESSION['role'] != 'pasien') {
     <!-- Pendaftaran Pemeriksaan -->
     <section class="pendaftaran-section">
       <h2>Pendaftaran Pemeriksaan</h2>
-      <form class="pendaftaran-form" action="jadwal_dokter" method="get">
+      <form class="pendaftaran-form" action="jadwal_dokter.php" method="get">
         <div class="form-group">
           <label for="tanggal">Pilih Tanggal</label>
           <input type="date" id="tanggal" name="tanggal" required>

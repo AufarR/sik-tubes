@@ -1,4 +1,8 @@
 <?php
+/*
+PENTING
+Sejauh ini masih belum terpakai ini page :v
+*/
 // Selalu lempar user yg salah ataupun ga login
 session_start();
 if ($_SESSION['role'] != 'pasien') {

@@ -43,7 +43,7 @@ if ($_SESSION['role'] != 'admin') {
   <main class="main-content">
     <section class="form-section">
       <h2>Edit Data</h2>
-      <form action="edit_success" method="post">
+      <form action="proses_edit.php" method="post">
         <div class="form-group">
           <label for="nama">Nama</label>
           <input type="text" id="nama" name="nama" placeholder="Masukkan Nama" required>

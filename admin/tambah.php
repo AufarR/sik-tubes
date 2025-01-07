@@ -21,7 +21,7 @@ if ($_SESSION['role'] != 'admin') {
   <main class="main-content">
     <section class="form-section">
       <h2>Tambah Data</h2>
-      <form action="tambah_success" method="post">
+      <form action="proses_tambah.php" method="post">
         <div class="form-group">
           <label for="nama">Nama</label>
           <input type="text" id="nama" name="nama" placeholder="Masukkan Nama" required>

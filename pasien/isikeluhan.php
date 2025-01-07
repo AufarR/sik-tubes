@@ -22,7 +22,7 @@ if ($_SESSION['role'] != 'pasien') {
   <main class="main-content">
     <section class="keluhan-section">
       <h2>Isi Keluhan</h2>
-      <form action="keluhan_success" method="post" class="keluhan-form">
+      <form action="proses_pendaftaran.php" method="post" class="keluhan-form">
         <div class="form-group">
           <label for="keluhan">Isi Keluhan Anda</label>
           <textarea id="keluhan" name="keluhan" rows="5" placeholder="Tulis keluhan Anda di sini..." required></textarea>

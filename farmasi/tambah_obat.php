@@ -20,7 +20,7 @@ if ($_SESSION['role'] != 'farmasi') {
   </header>
 
   <main class="main-content">
-    <form action="farmasi" method="post" class="tambah-form">
+    <form action="proses_tambah_obat.php" method="post" class="tambah-form">
       <div class="form-group">
         <label for="nama-obat">Nama Obat</label>
         <input type="text" id="nama-obat" name="nama-obat" placeholder="Masukkan nama obat" required>
