@@ -3,160 +3,86 @@
 session_start();
 if ($_SESSION['role'] != 'pasien') {
     header('Location: /auth/login.php');
+    exit();
 }
+
+// Koneksi ke database
+$host = "localhost";
+$user = "root";
+$password = ""; // Ganti dengan password Anda
+$database = "sik"; // Nama database
+$conn = new mysqli($host, $user, $password, $database);
+
+// Periksa koneksi
+if ($conn->connect_error) {
+    die("Koneksi gagal: " . $conn->connect_error);
+}
+
+// Ambil tanggal dari input (default hari ini)
+$tanggal = isset($_GET['tanggal']) ? $_GET['tanggal'] : date('Y-m-d');
+
+// Query untuk mengambil data jadwal dan dokter
+$sql = "SELECT b.id AS booking_id, b.waktu, b.status, d.nama, d.no_telp, d.email
+        FROM booking b
+        JOIN dokter d ON b.dokterid = d.id
+        WHERE b.tgl = ? AND b.status = 0";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $tanggal);
+$stmt->execute();
+$result = $stmt->get_result();
 ?>
 
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jadwal Dokter</title>
-  <link rel="stylesheet" href="jadwal_dokter.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jadwal Dokter</title>
+    <link rel="stylesheet" href="jadwal_dokter.css">
 </head>
 <body>
-  <header class="header">
+<header class="header">
     <h1>Puskesmas Cinta Kasih Satu Hati</h1>
-  </header>
+</header>
 
-  <main class="main-content">
+<main class="main-content">
     <section class="jadwal-section">
-      <h2>Pilih Dokter dan Waktu</h2>
-      <div class="jadwal-grid">
-        <!-- Jam Operasional -->
-        <div class="jadwal-row">
-          <div class="jadwal-waktu">
-            <strong>08:00-09:00</strong>
-            <p class="kuota">Sisa Kuota: 14</p>
-          </div>
-          <div class="dokter-card">
-            <img src="dokter1.jpg" alt="Dr. Nadira Salsabila Hayat">
-            <div class="dokter-info">
-              <h3>dr. Nadira Salsabila Hayat</h3>
-              <button class="btn-pilih">Pilih</button>
-            </div>
-          </div>
-          <div class="dokter-card">
-            <img src="dokter2.jpg" alt="Dr. Nurryamanda Nafiani Solihin">
-            <div class="dokter-info">
-              <h3>dr. Nurryamanda Nafiani Solihin</h3>
-              <button class="btn-pilih">Pilih</button>
-            </div>
-          </div>
+        <h2>Pilih Dokter dan Waktu</h2>
+        <div class="jadwal-grid">
+            <?php
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    $waktuMulai = date('H:i', strtotime($row['waktu']));
+                    $waktuSelesai = date('H:i', strtotime($waktuMulai . " +1 hour"));
+
+                    $dokterNama = $row['nama'];
+
+                    echo "<div class='jadwal-row'>";
+                    echo "  <div class='jadwal-waktu'>";
+                    echo "    <strong>{$waktuMulai}-{$waktuSelesai}</strong>";
+                    echo "    <p class='kuota'>Sisa Kuota: 1</p>"; // Kuota bisa diambil dari database jika tersedia
+                    echo "  </div>";
+                    echo "  <div class='dokter-card'>";
+                    //echo "    <img src='{$dokter['gambar']}' alt='{$dokter['nama']}'>";
+                    echo "    <div class='dokter-info'>";
+                    echo "      <h3>{$dokterNama}</h3>";
+                    echo "      <button class='btn-pilih' onclick=\"location.href='isikeluhan.php?id={$row['booking_id']}'\">Pilih</button>";
+                    echo "    </div>";
+                    echo "  </div>";
+                    echo "</div>";
+                }
+            } else {
+                echo "<p>Tidak ada jadwal yang belum dipesan pada tanggal $tanggal.</p>";
+            }
+            ?>
         </div>
-
-        <!-- Ulangi untuk waktu berikutnya -->
-        <div class="jadwal-row">
-          <div class="jadwal-waktu">
-            <strong>09:00-10:00</strong>
-            <p class="kuota">Sisa Kuota: 14</p>
-          </div>
-          <div class="dokter-card">
-            <img src="dokter1.jpg" alt="Dr. Nadira Salsabila Hayat">
-            <div class="dokter-info">
-              <h3>dr. Nadira Salsabila Hayat</h3>
-              <button class="btn-pilih">Pilih</button>
-            </div>
-          </div>
-          <div class="dokter-card">
-            <img src="dokter2.jpg" alt="Dr. Nurryamanda Nafiani Solihin">
-            <div class="dokter-info">
-              <h3>dr. Nurryamanda Nafiani Solihin</h3>
-              <button class="btn-pilih">Pilih</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Ulangi untuk waktu berikutnya -->
-        <div class="jadwal-row">
-            <div class="jadwal-waktu">
-              <strong>10:00-11:00</strong>
-              <p class="kuota">Sisa Kuota: 14</p>
-            </div>
-            <div class="dokter-card">
-              <img src="dokter1.jpg" alt="Dr. Nadira Salsabila Hayat">
-              <div class="dokter-info">
-                <h3>dr. Nadira Salsabila Hayat</h3>
-                <button class="btn-pilih">Pilih</button>
-              </div>
-            </div>
-            <div class="dokter-card">
-              <img src="dokter2.jpg" alt="Dr. Nurryamanda Nafiani Solihin">
-              <div class="dokter-info">
-                <h3>dr. Nurryamanda Nafiani Solihin</h3>
-                <button class="btn-pilih">Pilih</button>
-              </div>
-            </div>
-          </div>
-
-        <!-- Ulangi untuk waktu berikutnya -->
-        <div class="jadwal-row">
-            <div class="jadwal-waktu">
-              <strong>11:00-12:00</strong>
-              <p class="kuota">Sisa Kuota: 14</p>
-            </div>
-            <div class="dokter-card">
-              <img src="dokter1.jpg" alt="Dr. Nadira Salsabila Hayat">
-              <div class="dokter-info">
-                <h3>dr. Nadira Salsabila Hayat</h3>
-                <button class="btn-pilih">Pilih</button>
-              </div>
-            </div>
-            <div class="dokter-card">
-              <img src="dokter2.jpg" alt="Dr. Nurryamanda Nafiani Solihin">
-              <div class="dokter-info">
-                <h3>dr. Nurryamanda Nafiani Solihin</h3>
-                <button class="btn-pilih">Pilih</button>
-              </div>
-            </div>
-          </div>
-
-                  <!-- Ulangi untuk waktu berikutnya -->
-        <div class="jadwal-row">
-            <div class="jadwal-waktu">
-              <strong>13:00-14:00</strong>
-              <p class="kuota">Sisa Kuota: 14</p>
-            </div>
-            <div class="dokter-card">
-              <img src="dokter1.jpg" alt="Dr. Nadira Salsabila Hayat">
-              <div class="dokter-info">
-                <h3>dr. Nadira Salsabila Hayat</h3>
-                <button class="btn-pilih">Pilih</button>
-              </div>
-            </div>
-            <div class="dokter-card">
-              <img src="dokter2.jpg" alt="Dr. Nurryamanda Nafiani Solihin">
-              <div class="dokter-info">
-                <h3>dr. Nurryamanda Nafiani Solihin</h3>
-                <button class="btn-pilih">Pilih</button>
-              </div>
-            </div>
-          </div>
-        <!-- Tambahkan baris berikutnya sesuai jam operasional -->
-
-                  <!-- Ulangi untuk waktu berikutnya -->
-        <div class="jadwal-row">
-            <div class="jadwal-waktu">
-              <strong>14:00-15:00</strong>
-              <p class="kuota">Sisa Kuota: 14</p>
-            </div>
-            <div class="dokter-card">
-              <img src="dokter1.jpg" alt="Dr. Nadira Salsabila Hayat">
-              <div class="dokter-info">
-                <h3>dr. Nadira Salsabila Hayat</h3>
-                <button class="btn-pilih">Pilih</button>
-              </div>
-            </div>
-            <div class="dokter-card">
-              <img src="dokter2.jpg" alt="Dr. Nurryamanda Nafiani Solihin">
-              <div class="dokter-info">
-                <h3>dr. Nurryamanda Nafiani Solihin</h3>
-                <button class="btn-pilih">Pilih</button>
-              </div>
-            </div>
-          </div>
-      </div>
     </section>
-  </main>
+</main>
 </body>
 </html>
+
+<?php
+// Tutup koneksi
+$stmt->close();
+$conn->close();
+?>
