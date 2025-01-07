@@ -13,6 +13,7 @@ if ($_SESSION['role'] != 'dokter') {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Isi Diagnosis</title>
   <link rel="stylesheet" href="isidiagnosis.css">
+  <link rel="stylesheet" href="dokter.css">
   <script>
     // Fungsi untuk menambah baris baru pada tabel diagnosis
     function tambahBarisICD() {
@@ -110,9 +111,10 @@ $conn->close()
 </head>
 <body>
   <header class="header">
-    <div class="header-container">
-      <button class="btn-back" onclick="history.back()">← Back</button>
-      <h1>Cinta Kasih Satu Hati - Isi Diagnosis</h1>
+    <h1>Puskesmas Cinta Kasih Satu Hati - Isi Diagnosis</h1>
+    <div class="header-buttons">
+      <button class="btn-profile" onclick="history.back()">Back</button>
+      <button class="btn-logout" onclick="location.href='/auth/logout.php'">Logout</button>
     </div>
   </header>
 
