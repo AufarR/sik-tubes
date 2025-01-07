@@ -6,17 +6,9 @@ if ($_SESSION['role'] != 'pasien') {
     exit();
 }
 
-// Koneksi ke database
-$host = "localhost";
-$user = "root";
-$password = ""; // Ganti dengan password Anda
-$database = "sik"; // Nama database
-$conn = new mysqli($host, $user, $password, $database);
-
-// Periksa koneksi
-if ($conn->connect_error) {
-    die("Koneksi gagal: " . $conn->connect_error);
-}
+// Create connection
+include_once("../lib/connection.php");
+$conn = connectDB();
 
 // Ambil tanggal dari input (default hari ini)
 $tanggal = isset($_GET['tanggal']) ? $_GET['tanggal'] : date('Y-m-d');

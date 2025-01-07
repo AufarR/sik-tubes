@@ -6,17 +6,9 @@ if ($_SESSION['role'] != 'pasien') {
     exit();
 }
 
-// Koneksi ke database
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "sik";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Koneksi gagal: " . $conn->connect_error);
-}
+// Create connection
+include_once("../lib/connection.php");
+$conn = connectDB();
 
 // Ambil ID pemeriksaan dari parameter GET
 $id_pemeriksaan = $_GET['id'];
