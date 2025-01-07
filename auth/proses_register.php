@@ -1,4 +1,5 @@
 <?php
+// Nama variabel yg diperlukan: nik, nama, tgl_lahir (format string "DDDD-M-Y"), jenis_kelamin, alamat, no_telp, email, password
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     // Create connection

@@ -4,4 +4,5 @@ session_start();
 if ($_SESSION['role'] != 'farmasi') {
     header('Location: /auth/login.php');
 }
+// Nama2 variabel input: nama, tgl_exp (format string "DDDD-M-Y")
 ?>

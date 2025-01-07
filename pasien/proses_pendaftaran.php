@@ -4,4 +4,5 @@ session_start();
 if ($_SESSION['role'] != 'pasien') {
     header('Location: /auth/login.php');
 }
+// Nama variabel yg diperlukan: bookingid, dokterid, pasienid, keluhan
 ?>
