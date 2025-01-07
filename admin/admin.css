@@ -1,0 +1,100 @@
+/* admin.css */
+
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #FFFAF0;
+    color: #333;
+  }
+  
+  header {
+    background-color: #FFA07A;
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+  }
+  
+  h1 {
+    margin: 0;
+    font-size: 1.8rem;
+  }
+  
+  .main-content {
+    padding: 20px;
+  }
+  
+  h2 {
+    color: #D35400;
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+  }
+  
+  .list-section {
+    margin-bottom: 30px;
+  }
+  
+  /* Tabel Data */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+  }
+  
+  .data-table th, .data-table td {
+    text-align: left;
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  .data-table th {
+    background-color: #FAD7A0;
+    color: #D35400;
+    font-weight: bold;
+  }
+  
+  .data-table tbody tr:nth-child(even) {
+    background-color: #FFF5E1;
+  }
+  
+  .data-table tbody tr:hover {
+    background-color: #FFE5C5;
+  }
+  
+  /* Tombol */
+  button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .btn-hapus {
+    background-color: #E74C3C;
+    color: white;
+  }
+  
+  .btn-hapus:hover {
+    background-color: #C0392B;
+  }
+  
+  .btn-edit {
+    background-color: #F39C12;
+    color: white;
+  }
+  
+  .btn-edit:hover {
+    background-color: #D68910;
+  }
+  
+  .btn-tambah {
+    background-color: #28B463;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .btn-tambah:hover {
+    background-color: #1D8348;
+  }
+  

@@ -1,0 +1,162 @@
+/* Global Styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #FFFAF0;
+    color: #333;
+  }
+  
+  header {
+    background-color: #f7f7f7;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  header h1 {
+    font-size: 1.5rem;
+    color: #D35400;
+  }
+  
+  .header-buttons button {
+    background-color: #FEA47F;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-left: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .header-buttons button:hover {
+    background-color: #FF7F50;
+  }
+  
+  /* Main Content */
+  .main-content {
+    padding: 20px;
+  }
+  
+  /* Pendaftaran Pemeriksaan */
+  .pendaftaran-section {
+    background-color: #FAD7A0;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    margin: 0 auto 30px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .pendaftaran-section h2 {
+    text-align: center;
+    color: #D35400;
+    margin-bottom: 20px;
+  }
+  
+  .pendaftaran-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  input[type="date"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #333;
+    background-color: white;
+    height: 44px;
+    box-sizing: border-box;
+  }
+  
+  input[type="date"]:focus {
+    border-color: #FEA47F;
+    outline: none;
+    box-shadow: 0 0 5px rgba(254, 164, 127, 0.5);
+  }
+  
+  button.btn-cari {
+    background-color: #FEA47F;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  button.btn-cari:hover {
+    background-color: #FF7F50;
+  }
+  
+  /* Riwayat Pemeriksaan */
+  .riwayat-section {
+    background-color: #FAD7A0;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .riwayat-section h2 {
+    text-align: center;
+    color: #D35400;
+    margin-bottom: 20px;
+  }
+  
+  table.riwayat-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  table.riwayat-table th, table.riwayat-table td {
+    text-align: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  table.riwayat-table th {
+    background-color: #FEA47F;
+    color: white;
+  }
+  
+  button.btn-detail {
+    background-color: #FEA47F;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button.btn-detail:hover {
+    background-color: #FF7F50;
+  }
+  
+  /* Responsiveness */
+  @media (max-width: 768px) {
+    .pendaftaran-section, .riwayat-section {
+      padding: 15px;
+    }
+  
+    table.riwayat-table th, table.riwayat-table td {
+      font-size: 0.9rem;
+    }
+  }
+  

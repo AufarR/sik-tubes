@@ -1,0 +1,120 @@
+/* Global Styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #FFFAF0;
+    color: #333;
+  }
+  
+  header {
+    background-color: #FAD7A0;
+    text-align: center;
+    padding: 10px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  header h1 {
+    font-size: 1.5rem;
+    color: #D35400;
+  }
+  
+  /* Main Content */
+  .main-content {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .info-section,
+  .form-section {
+    background-color: #FAD7A0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .info-section h2,
+  .form-section h2 {
+    text-align: center;
+    color: #D35400;
+  }
+  
+  .info-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  .info-table th,
+  .info-table td {
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .info-table th {
+    background-color: #FEA47F;
+    color: white;
+    width: 40%;
+  }
+  
+  .info-table td {
+    background-color: white;
+  }
+  
+  /* Form Styles */
+  .pemeriksaan-form .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  input[type="text"],
+  input[type="number"],
+  select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+  }
+  
+  input:focus,
+  select:focus {
+    border-color: #FEA47F;
+    outline: none;
+    box-shadow: 0 0 5px rgba(254, 164, 127, 0.5);
+  }
+  
+  button.btn-submit {
+    background-color: #FEA47F;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+  }
+  
+  button.btn-submit:hover {
+    background-color: #FF7F50;
+  }
+  
+  /* Responsiveness */
+  @media (max-width: 768px) {
+    .info-table th,
+    .info-table td,
+    label,
+    input,
+    select {
+      font-size: 0.9rem;
+    }
+  }
+  

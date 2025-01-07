@@ -1,0 +1,77 @@
+/* daftar_obat.css */
+
+/* Global Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #FFFAF0;
+  color: #333;
+}
+
+header {
+  background-color: #FFA07A;
+  color: white;
+  padding: 15px 20px;
+  text-align: center;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.main-content {
+  padding: 20px;
+}
+
+h2 {
+  color: #D35400;
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
+
+/* Tabel Informasi Pasien */
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.info-table th, .info-table td {
+  text-align: left;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.info-table th {
+  background-color: #FAD7A0;
+  color: #D35400;
+}
+
+/* Tabel Resep Obat */
+.obat-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.obat-table th, .obat-table td {
+  text-align: left;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.obat-table th {
+  background-color: #FAD7A0;
+  color: #D35400;
+  font-weight: bold;
+}
+
+.obat-table tbody tr:nth-child(even) {
+  background-color: #FFF5E1;
+}
+
+.obat-table tbody tr:hover {
+  background-color: #FFE5C5;
+}

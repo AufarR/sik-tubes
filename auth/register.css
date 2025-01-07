@@ -1,0 +1,113 @@
+/* Global styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #FFFAF0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Pastikan form tidak terlalu atas */
+    height: 100vh;
+    padding-top: 50px; /* Tambahkan ruang di atas */
+  }
+  
+  h1 {
+    font-size: 1.8rem; /* Sedikit perbesar judul */
+    color: #D35400;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Register Container */
+  .register-container {
+    background-color: #FAD7A0;
+    padding: 40px; /* Tambahkan padding untuk ruang yang lebih lega */
+    width: 500px; /* Lebarkan form */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .register-form {
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+    text-align: left;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="tel"],
+  input[type="date"],
+  select {
+    width: 100%;
+    padding: 12px; /* Tambahkan padding untuk input */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1rem; /* Perbesar teks input */
+  }
+  
+  input::placeholder {
+    font-style: italic;
+    color: #aaa;
+  }
+  
+  select {
+    background-color: #fff;
+    font-size: 1rem;
+  }
+  
+  /* Buttons */
+  .btn-login {
+    background-color: #FEA47F;
+    color: #fff;
+    border: none;
+    padding: 12px 20px; /* Perbesar tombol */
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .btn-login:hover {
+    background-color: #FF7F50;
+  }
+  
+  .btn-register {
+    background-color: transparent;
+    color: #D35400;
+    border: 1px solid #D35400;
+    padding: 12px 20px; /* Perbesar tombol */
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+  }
+  
+  .btn-register:hover {
+    background-color: #D35400;
+    color: #fff;
+  }
+  
+  /* Responsiveness */
+  @media (max-width: 768px) {
+    .register-container {
+      width: 90%; /* Tetap responsif untuk layar kecil */
+      padding: 30px; /* Kurangi padding pada layar kecil */
+    }
+  
+    h1 {
+      font-size: 1.5rem; /* Kecilkan font pada layar kecil */
+    }
+  }
+  

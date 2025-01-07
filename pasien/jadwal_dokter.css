@@ -1,0 +1,125 @@
+/* Global Styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+header {
+  background-color: #f7f7f7;
+  text-align: center;
+  padding: 10px 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  font-size: 1.5rem;
+  color: #D35400;
+}
+
+/* Main Content */
+.main-content {
+  padding: 20px;
+}
+
+.jadwal-section h2 {
+  text-align: center;
+  color: #D35400;
+  margin-bottom: 20px;
+}
+
+.jadwal-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.jadwal-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.jadwal-waktu {
+  flex: 1;
+  background-color: #f1f1f1;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.jadwal-waktu strong {
+  display: block;
+  color: #D35400;
+  font-size: 1.2rem;
+}
+
+.kuota {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+.dokter-card {
+  display: flex;
+  flex: 2;
+  align-items: center;
+  gap: 10px;
+  background-color: #E0E0E0;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.dokter-card img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.dokter-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+}
+
+.dokter-info h3 {
+  font-size: 1rem;
+  color: #333;
+}
+
+.btn-pilih {
+  background-color: #6C63FF;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-pilih:hover {
+  background-color: #5a54e3;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .jadwal-row {
+    flex-direction: column;
+  }
+
+  .dokter-card {
+    justify-content: center;
+  }
+
+  .dokter-info {
+    flex-direction: column;
+    text-align: center;
+  }
+}

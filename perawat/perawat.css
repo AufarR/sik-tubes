@@ -1,0 +1,81 @@
+/* Global Styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #FFFAF0;
+  color: #333;
+}
+
+header {
+  background-color: #FAD7A0;
+  text-align: center;
+  padding: 10px 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  font-size: 1.5rem;
+  color: #D35400;
+}
+
+/* Main Content */
+.main-content {
+  padding: 20px;
+}
+
+.list-pasien-section {
+  background-color: #FAD7A0;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 800px;
+  margin: 0 auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.list-pasien-section h2 {
+  text-align: center;
+  color: #D35400;
+  margin-bottom: 20px;
+}
+
+.list-pasien-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.list-pasien-table th,
+.list-pasien-table td {
+  text-align: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.list-pasien-table th {
+  background-color: #FEA47F;
+  color: white;
+}
+
+.list-pasien-table tr:hover {
+  background-color: #FAD7A0;
+}
+
+button.btn-isi {
+  background-color: #6C63FF;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button.btn-isi:hover {
+  background-color: #5a54e3;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .list-pasien-table {
+    font-size: 0.9rem;
+  }
+}
