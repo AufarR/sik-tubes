@@ -12,7 +12,7 @@
       <h1>Selamat Datang</h1>
       <h2>Puskesmas Cinta Kasih Satu Hati</h2>
       <p>Serve You With Love</p>
-      <button class="btn-primary"> Masuk </button>
+      <button class="btn-primary" onclick="location.href='auth/login.php'"> Masuk </button>
     </div>
   </header>
 

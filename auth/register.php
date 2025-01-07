@@ -48,7 +48,7 @@
       </div>
       <button type="submit" class="btn-login">Daftar</button>
     </form>
-    <button class="btn-register" onclick="location.href='login'">Kembali ke Login</button>
+    <button class="btn-register" onclick="location.href='login.php'">Kembali ke Login</button>
   </div>
 </body>
 </html>

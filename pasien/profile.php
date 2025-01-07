@@ -50,7 +50,7 @@
             <td>johndoe@example.com</td>
           </tr>
         </table>
-        <button class="btn-edit" onclick="location.href='edit_profile'">Edit</button>
+        <button class="btn-edit" onclick="location.href='edit_profile.php'">Edit</button>
       </div>
     </section>
   </main>

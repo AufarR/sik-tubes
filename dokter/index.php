@@ -8,7 +8,7 @@
   <script>
     // Fungsi untuk mengarahkan ke halaman isidiagnosis dengan parameter URL
     function isiHasilPemeriksaan(waktu, pasien) {
-      const url = `isidiagnosis?time=${encodeURIComponent(waktu)}&patient=${encodeURIComponent(pasien)}`;
+      const url = `isidiagnosis.php?time=${encodeURIComponent(waktu)}&patient=${encodeURIComponent(pasien)}`;
       window.location.href = url;
     }
   </script>

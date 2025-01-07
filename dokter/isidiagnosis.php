@@ -31,7 +31,7 @@
 
     // Fungsi untuk membuka halaman riwayat dengan parameter
     function lihatRiwayat(date, time) {
-      const url = `riwayat?date=${date}&time=${time}`;
+      const url = `riwayat.php?date=${date}&time=${time}`;
       window.location.href = url;
     }
 

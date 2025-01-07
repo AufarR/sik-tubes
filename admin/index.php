@@ -8,12 +8,12 @@
   <script>
     // Fungsi untuk mengarahkan ke halaman Tambah
     function tambahData(role) {
-      window.location.href = `tambah?role=${role}`;
+      window.location.href = `tambah.php?role=${role}`;
     }
 
     // Fungsi untuk mengarahkan ke halaman Edit dengan parameter data
     function editData(role, nama, nomor, telepon, email) {
-      const url = `edit?role=${role}&nama=${encodeURIComponent(nama)}&nomor=${encodeURIComponent(nomor)}&telepon=${encodeURIComponent(telepon)}&email=${encodeURIComponent(email)}`;
+      const url = `edit.php?role=${role}&nama=${encodeURIComponent(nama)}&nomor=${encodeURIComponent(nomor)}&telepon=${encodeURIComponent(telepon)}&email=${encodeURIComponent(email)}`;
       window.location.href = url;
     }
 

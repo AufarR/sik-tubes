@@ -8,7 +8,7 @@
   <script>
     // Fungsi untuk membuka halaman riwayat dengan parameter
     function showDetail(date, time) {
-      const url = `riwayat?date=${date}&time=${time}`;
+      const url = `riwayat.php?date=${date}&time=${time}`;
       window.location.href = url;
     }
   </script>
@@ -17,8 +17,8 @@
   <header class="header">
     <h1>Puskesmas Cinta Kasih Satu Hati</h1>
     <div class="header-buttons">
-      <button class="btn-profile" onclick="location.href='profile'">Profile</button>
-      <button class="btn-logout" onclick="location.href='login'">Logout</button>
+      <button class="btn-profile" onclick="location.href='profile.php'">Profile</button>
+      <button class="btn-logout" onclick="location.href='/auth/logout.php'">Logout</button>
     </div>
   </header>
 

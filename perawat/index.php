@@ -8,7 +8,7 @@
   <script>
     // Fungsi untuk mengarahkan ke halaman pengisian hasil pemeriksaan
     function isiPemeriksaan(tanggal, waktu, pasien) {
-      const url = `pemeriksaan_awal?date=${tanggal}&time=${waktu}&patient=${pasien}`;
+      const url = `pemeriksaan_awal.php?date=${tanggal}&time=${waktu}&patient=${pasien}`;
       window.location.href = url;
     }
   </script>
