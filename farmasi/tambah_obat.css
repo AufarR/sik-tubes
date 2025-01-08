@@ -1,29 +1,3 @@
-/* Global Styles */
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #FFFAF0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 100vh;
-}
-
-/* Header Styles */
-header {
-  width: 100%;
-  text-align: center;
-  background-color: #4CAF50; /* Hijau untuk header */
-  padding: 15px 0;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-header h1 {
-  margin: 0;
-  color: white;
-  font-size: 1.5rem;
-}
-
 /* Main Content */
 .main-content {
   background-color: #FAD7A0;
@@ -118,32 +92,6 @@ button {
 
 .btn-cancel:hover {
   background-color: #E53935;
-}
-
-/* Global Styles */
-body {
-margin: 0;
-font-family: Arial, sans-serif;
-background-color: #FFFAF0;
-display: flex;
-flex-direction: column;
-align-items: center;
-min-height: 100vh;
-}
-
-/* Header Styles */
-header {
-width: 100%;
-text-align: center;
-background-color: #4CAF50; /* Hijau untuk header */
-padding: 15px 0;
-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-header h1 {
-margin: 0;
-color: white;
-font-size: 1.5rem;
 }
 
 /* Main Content */
