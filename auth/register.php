@@ -19,8 +19,8 @@
         <input type="text" id="nama" name="nama" placeholder="Masukkan Nama" required>
       </div>
       <div class="form-group">
-        <label for="tanggal_lahir">Tanggal Lahir</label>
-        <input type="date" id="tanggal_lahir" name="tanggal_lahir" required>
+        <label for="tgl_lahir">Tanggal Lahir</label>
+        <input type="date" id="tgl_lahir" name="tgl_lahir" required>
       </div>
       <div class="form-group">
         <label for="jenis_kelamin">Jenis Kelamin</label>
@@ -35,8 +35,8 @@
         <input type="text" id="alamat" name="alamat" placeholder="Masukkan Alamat" required>
       </div>
       <div class="form-group">
-        <label for="no_telfon">No. Telepon</label>
-        <input type="tel" id="no_telfon" name="no_telfon" placeholder="Masukkan No. Telepon" required>
+        <label for="no_telp">No. Telepon</label>
+        <input type="tel" id="no_telp" name="no_telp" placeholder="Masukkan No. Telepon" required>
       </div>
       <div class="form-group">
         <label for="email">Email</label>
