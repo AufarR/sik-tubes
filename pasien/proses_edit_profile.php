@@ -90,6 +90,8 @@ if (isset($_POST['email']) && !empty($_POST['email'])) {
     $stmtUpdate->bind_param("si", $_POST['email'], $userid);
     $stmtUpdate->execute();
     $stmtUpdate->close();
+
+    $_SESSION['username'] = $_POST['email'];
 }
 
 if (isset($_POST['password']) && !empty($_POST['password'])) {
