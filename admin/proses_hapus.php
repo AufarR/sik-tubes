@@ -11,6 +11,12 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
     header('Location: /admin');
     exit();
 }
+
+// Decode all POST data
+foreach ($_POST as $key => $value) {
+    $_POST[$key] = urldecode($value);
+}
+
 // Nama2 variabel input: userid (bukan dokterid/pasienid/dsb.), role
 // Create connection
 include_once("../lib/connection.php");

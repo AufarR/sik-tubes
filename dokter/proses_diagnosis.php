@@ -11,6 +11,12 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
     header('Location: /dokter');
     exit();
 }
+
+// Decode all POST data
+foreach ($_POST as $key => $value) {
+    $_POST[$key] = urldecode($value);
+}
+
 /* Nama2 variabel input:
     - id (id pemeriksaan)
     - diagnosis (string panjang isinya kode2 ICD digabungin jd satu string dipisah titik koma ";". Beda2 spasi dikit gapapa

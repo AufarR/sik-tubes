@@ -17,93 +17,102 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 include_once("../lib/connection.php");
 $conn = connectDB();
 
-if (!isset($_POST['id']) || !empty($_POST['id'])) {
+if (!isset($_POST['id']) || empty($_POST['id'])) {
     http_response_code(400);
-    break;
+    header('Location: /pasien');
+    die();
 }
+
+$id = urldecode($_POST['id']);
+$nik = isset($_POST['nik']) ? urldecode($_POST['nik']) : null;
+$nama = isset($_POST['nama']) ? urldecode($_POST['nama']) : null;
+$tgl_lahir = isset($_POST['tgl_lahir']) ? urldecode($_POST['tgl_lahir']) : null;
+$jenis_kelamin = isset($_POST['jenis_kelamin']) ? urldecode($_POST['jenis_kelamin']) : null;
+$alamat = isset($_POST['alamat']) ? urldecode($_POST['alamat']) : null;
+$no_telp = isset($_POST['no_telp']) ? urldecode($_POST['no_telp']) : null;
+$email = isset($_POST['email']) ? urldecode($_POST['email']) : null;
+$password = isset($_POST['password']) ? urldecode($_POST['password']) : null;
 
 $sqlSelect = "SELECT userid FROM pasien WHERE id = ?";
 $stmtSelect = $conn->prepare($sqlSelect);
-$stmtSelect->bind_param("i", $_POST['id']);
+$stmtSelect->bind_param("i", $id);
 $stmtSelect->execute();
 $stmtSelect->bind_result($userid);
 $stmtSelect->fetch();
 $stmtSelect->close();
 
-if (isset($_POST['nama']) && !empty($_POST['nama'])) {
+if ($nama) {
     $sqlUpdate = "UPDATE pasien SET nama = ? WHERE id = ?";
     $stmtUpdate = $conn->prepare($sqlUpdate);
-    $stmtUpdate->bind_param("si", $_POST['nama'], $_POST['id']);
+    $stmtUpdate->bind_param("si", $nama, $id);
     $stmtUpdate->execute();
     $stmtUpdate->close();
 }
 
-if (isset($_POST['nik']) && !empty($_POST['nik'])) {
+if ($nik) {
     $sqlUpdate = "UPDATE pasien SET nik = ? WHERE id = ?";
     $stmtUpdate = $conn->prepare($sqlUpdate);
-    $stmtUpdate->bind_param("si", $_POST['nik'], $_POST['id']);
+    $stmtUpdate->bind_param("si", $nik, $id);
     $stmtUpdate->execute();
     $stmtUpdate->close();
 }
 
-if (isset($_POST['tgl_lahir']) && !empty($_POST['tgl_lahir'])) {
+if ($tgl_lahir) {
     $sqlUpdate = "UPDATE pasien SET tgl_lahir = ? WHERE id = ?";
     $stmtUpdate = $conn->prepare($sqlUpdate);
-    $stmtUpdate->bind_param("si", $_POST['tgl_lahir'], $_POST['id']);
+    $stmtUpdate->bind_param("si", $tgl_lahir, $id);
     $stmtUpdate->execute();
     $stmtUpdate->close();
 }
 
-if (isset($_POST['jenis_kelamin']) && !empty($_POST['jenis_kelamin'])) {
+if ($jenis_kelamin) {
     $sqlUpdate = "UPDATE pasien SET jenis_kelamin = ? WHERE id = ?";
     $stmtUpdate = $conn->prepare($sqlUpdate);
-    $stmtUpdate->bind_param("si", $_POST['jenis_kelamin'], $_POST['id']);
+    $stmtUpdate->bind_param("si", $jenis_kelamin, $id);
     $stmtUpdate->execute();
     $stmtUpdate->close();
 }
 
-if (isset($_POST['alamat']) && !empty($_POST['alamat'])) {
+if ($alamat) {
     $sqlUpdate = "UPDATE pasien SET alamat = ? WHERE id = ?";
     $stmtUpdate = $conn->prepare($sqlUpdate);
-    $stmtUpdate->bind_param("si", $_POST['alamat'], $_POST['id']);
+    $stmtUpdate->bind_param("si", $alamat, $id);
     $stmtUpdate->execute();
     $stmtUpdate->close();
 }
 
-if (isset($_POST['no_telp']) && !empty($_POST['no_telp'])) {
+if ($no_telp) {
     $sqlUpdate = "UPDATE pasien SET no_telp = ? WHERE id = ?";
     $stmtUpdate = $conn->prepare($sqlUpdate);
-    $stmtUpdate->bind_param("si", $_POST['no_telp'], $_POST['id']);
+    $stmtUpdate->bind_param("si", $no_telp, $id);
     $stmtUpdate->execute();
     $stmtUpdate->close();
 }
 
-if (isset($_POST['email']) && !empty($_POST['email'])) {
+if ($email) {
     $sqlUpdate = "UPDATE pasien SET email = ? WHERE id = ?";
     $stmtUpdate = $conn->prepare($sqlUpdate);
-    $stmtUpdate->bind_param("si", $_POST['email'], $_POST['id']);
+    $stmtUpdate->bind_param("si", $email, $id);
     $stmtUpdate->execute();
     $stmtUpdate->close();
 
     $sqlUpdate = "UPDATE kredensial SET username = ? WHERE userid = ?";
     $stmtUpdate = $conn->prepare($sqlUpdate);
-    $stmtUpdate->bind_param("si", $_POST['email'], $userid);
+    $stmtUpdate->bind_param("si", $email, $userid);
     $stmtUpdate->execute();
     $stmtUpdate->close();
 
-    $_SESSION['username'] = $_POST['email'];
+    $_SESSION['username'] = $email;
 }
 
-if (isset($_POST['password']) && !empty($_POST['password'])) {
+if ($password) {
     $sqlUpdate = "UPDATE kredensial SET password = ? WHERE userid = ?";
     $stmtUpdate = $conn->prepare($sqlUpdate);
-    $hashed_password = hash('sha256', $_POST['password']);
+    $hashed_password = hash('sha256', $password);
     $stmtUpdate->bind_param("si", $hashed_password, $userid);
     $stmtUpdate->execute();
     $stmtUpdate->close();
 }
-
-break;
 
 header('Location: /pasien');
 ?>

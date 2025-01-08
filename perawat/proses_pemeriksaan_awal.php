@@ -11,6 +11,11 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
     header('Location: /perawat');
     exit();
 }
+
+// Decode all POST data
+foreach ($_POST as $key => $value) {
+    $_POST[$key] = urldecode($value);
+}
 // Nama variabel yg diperlukan: id (ID pemeriksaan), sistol, diastol, heart_rate, tinggi, berat, suhu
 
 if (isset($_POST['id'], $_POST['sistol'], $_POST['diastol'], $_POST['heart_rate'], $_POST['tinggi'], $_POST['berat'], $_POST['suhu']) &&

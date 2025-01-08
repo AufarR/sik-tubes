@@ -11,6 +11,10 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
     header('Location: /farmasi');
     exit();
 }
+// Decode all POST data
+foreach ($_POST as $key => $value) {
+    $_POST[$key] = urldecode($value);
+}
 // Nama2 variabel input: nama, tgl_exp (format string "DDDD-M-Y")
 // Create connection
 include_once("../lib/connection.php");

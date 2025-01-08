@@ -2,6 +2,11 @@
 // Nama variabel yg diperlukan: nik, nama, tgl_lahir (format string "DDDD-M-Y"), jenis_kelamin, alamat, no_telp, email, password
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
+    // Decode all POST data
+    foreach ($_POST as $key => $value) {
+        $_POST[$key] = urldecode($value);
+    }
+
     // Create connection
     include_once("../lib/connection.php");
     $conn = connectDB();

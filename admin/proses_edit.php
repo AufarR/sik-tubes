@@ -11,6 +11,12 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
     header('Location: /admin');
     exit();
 }
+
+// Decode all POST data
+foreach ($_POST as $key => $value) {
+    $_POST[$key] = urldecode($value);
+}
+
 // Nama2 variabel input: userid (bukan dokterid/pasienid/dsb.), role, nama, nid (nomor identitas: NIK/STR/SIP), no_telp, email, password
 // Klw ada yg dikosongin/ga ada brrt ga diubah tp userid & role wajib yahh
 
@@ -21,7 +27,7 @@ $conn = connectDB();
 switch ($_POST['role']) {
     case 'dokter':
 
-        if (!isset($_POST['userid']) || !empty($_POST['userid'])) {
+        if (!isset($_POST['userid']) || empty($_POST['userid'])) {
             http_response_code(400);
             break;
         }
