@@ -44,7 +44,10 @@ if ($_SESSION['role'] != 'farmasi') {
 </head>
 <body>
   <header class="header">
-    <h1>Cinta Kasih Satu Hati - Halaman Farmasi</h1>
+    <h1>Puskesma Cinta Kasih Satu Hati - Halaman Farmasi</h1>
+    <div class="header-buttons">
+      <button class="btn-logout" onclick="location.href='/auth/logout.php'">Logout</button>
+    </div>
   </header>
 
   <main class="main-content">
@@ -100,7 +103,7 @@ if ($result_farmasi->num_rows > 0) {
               <td>{$row['waktu']}</td>
               <td>{$row['nama']}</td>
               <td>
-                  <button onclick=\"lihatResep({$row['id']})\" class='btn-isi'>Daftar Obat</a>
+                  <button onclick=\"lihatResep({$row['id']})\" class='btn-resep'>Daftar Obat</a>
               </td>
           </tr>";
       }

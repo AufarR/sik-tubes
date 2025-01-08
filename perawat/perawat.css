@@ -2,20 +2,37 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #FFFAF0;
+  background: linear-gradient(to right,#ffffff, #f4e9ed) ;
   color: #333;
 }
 
 header {
-  background-color: #FAD7A0;
-  text-align: center;
+  background-color: #760049;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 10px 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 header h1 {
   font-size: 1.5rem;
-  color: #D35400;
+  color: #fff;
+}
+
+.header-buttons button {
+  color: 760049;
+  border: none;
+  padding: 10px 15px;
+  margin-left: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.header-buttons button:hover {
+  background-color: #f0d4df;
+  color: #c82667;
 }
 
 /* Main Content */
@@ -24,7 +41,7 @@ header h1 {
 }
 
 .list-pasien-section {
-  background-color: #FAD7A0;
+  background-color: #f0d4df;
   padding: 20px;
   border-radius: 10px;
   max-width: 800px;
@@ -34,7 +51,7 @@ header h1 {
 
 .list-pasien-section h2 {
   text-align: center;
-  color: #D35400;
+  color: #c1195c;
   margin-bottom: 20px;
 }
 
@@ -51,16 +68,16 @@ header h1 {
 }
 
 .list-pasien-table th {
-  background-color: #FEA47F;
+  background-color: #c82667;
   color: white;
 }
 
 .list-pasien-table tr:hover {
-  background-color: #FAD7A0;
+  background-color: #f0e6ea;
 }
 
 button.btn-isi {
-  background-color: #6C63FF;
+  background-color: #c82667;
   color: white;
   border: none;
   padding: 5px 10px;
@@ -70,7 +87,7 @@ button.btn-isi {
 }
 
 button.btn-isi:hover {
-  background-color: #5a54e3;
+  background-color: #760049;
 }
 
 /* Responsiveness */

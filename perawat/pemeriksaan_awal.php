@@ -13,6 +13,7 @@ if ($_SESSION['role'] != 'perawat') {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pemeriksaan Awal</title>
   <link rel="stylesheet" href="pemeriksaan_awal.css">
+  <link rel="stylesheet" href="perawat.css">
   <script>
     // Fungsi untuk mengambil parameter dari URL
     function getParameterByName(name) {
@@ -23,10 +24,13 @@ if ($_SESSION['role'] != 'perawat') {
   </script>
 </head>
 <body>
-  <header class="header">
-    <h1>Cinta Kasih Satu Hati - Pemeriksaan Awal</h1>
+<header class="header">
+    <h1>Puskesmas Cinta Kasih Satu Hati</h1>
+    <div class="header-buttons">
+      <button class="btn-profile" onclick="history.back()">Back</button>
+      <button class="btn-logout" onclick="location.href='/auth/logout.php'">Logout</button>
+    </div>
   </header>
-
   <main class="main-content">
     <!-- Informasi Pasien -->
     <section class="info-section">

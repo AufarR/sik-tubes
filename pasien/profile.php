@@ -14,12 +14,14 @@ if ($_SESSION['role'] != 'pasien') {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Profile Pasien</title>
   <link rel="stylesheet" href="profile.css">
+  <link rel="stylesheet" href="pasien.css">
 </head>
 <body>
   <header class="header">
-    <div class="header-container">
-      <button class="btn-back" onclick="history.back()">← Back</button>
-      <h1>Puskesmas Cinta Kasih Satu Hati</h1>
+  <h1>Puskesmas Cinta Kasih Satu Hati</h1>
+    <div class="header-buttons">
+      <button class="btn-profile" onclick="history.back()">Back</button>
+      <button class="btn-logout" onclick="location.href='/auth/logout.php'">Logout</button>
     </div>
   </header>
 

@@ -36,10 +36,15 @@ $conn->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detail Pemeriksaan</title>
     <link rel="stylesheet" href="riwayat.css">
+    <link rel="stylesheet" href="dokter.css">
 </head>
 <body>
     <header class="header">
-        <h1>Cinta Kasih Satu Hati</h1>
+        <h1>Puskesmas Cinta Kasih Satu Hati</h1>
+        <div class="header-buttons">
+            <button class="btn-profile" onclick="history.back()">Back</button>
+            <button class="btn-logout" onclick="location.href='/auth/logout.php'">Logout</button>
+        </div>
     </header>
     <main class="main-content">
         <section class="detail-section">

@@ -31,14 +31,15 @@ $result = $stmt->get_result();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jadwal Dokter</title>
     <link rel="stylesheet" href="jadwal_dokter.css">
+    <link rel="stylesheet" href="pasien.css">
 </head>
 <body>
   
   <header class="header">
-    <div class="header-container">
-      <button class="btn-back" onclick="history.back()">← Back</button>
-      <h1>Puskesmas Cinta Kasih Satu Hati</h1>
-    </div>
+    <h1>Puskesmas Cinta Kasih Satu Hati</h1>
+        <div class="header-buttons">    
+            <button class="btn-profile" onclick="history.back()">Back</button>
+        </div>
   </header>
 
 <main class="main-content">

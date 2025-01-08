@@ -14,6 +14,7 @@ if ($_SESSION['role'] != 'farmasi') {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Edit Obat</title>
   <link rel="stylesheet" href="edit_obat.css">
+  <link rel="stylesheet" href="farmasi.css">
   <script>
     // Fungsi untuk memuat data obat dari URL
     window.onload = function () {
@@ -27,10 +28,15 @@ if ($_SESSION['role'] != 'farmasi') {
 </head>
 <body>
   <header class="header">
-    <h1>Cinta Kasih Satu Hati - Edit Obat</h1>
+    <h1>Puskesma Cinta Kasih Satu Hati</h1>
+    <div class="header-buttons">
+      <button class="btn-profile" onclick="history.back()">Back</button>
+      <button class="btn-logout" onclick="location.href='/auth/logout.php'">Logout</button>
+    </div>
   </header>
 
   <main class="main-content">
+    <h2>Edit Informasi Obat</h2>
 
 <?php
 

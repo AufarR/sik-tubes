@@ -2,12 +2,12 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #FFFAF0;
+    background: linear-gradient(to right,#ffffff, #f4e9ed) ;
     color: #333;
   }
   
   header {
-    background-color: #f7f7f7;
+    background-color: #760049;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -17,12 +17,11 @@ body {
   
   header h1 {
     font-size: 1.5rem;
-    color: #D35400;
+    color: #fff;
   }
   
   .header-buttons button {
-    background-color: #FEA47F;
-    color: white;
+    color: 760049;
     border: none;
     padding: 10px 15px;
     margin-left: 10px;
@@ -32,7 +31,8 @@ body {
   }
   
   .header-buttons button:hover {
-    background-color: #FF7F50;
+    background-color: #f0d4df;
+    color: #c82667;
   }
   
   /* Main Content */
@@ -42,7 +42,7 @@ body {
   
   /* Pendaftaran Pemeriksaan */
   .pendaftaran-section {
-    background-color: #FAD7A0;
+    background-color: #f0d4df;
     padding: 20px;
     border-radius: 10px;
     max-width: 500px;
@@ -52,7 +52,7 @@ body {
   
   .pendaftaran-section h2 {
     text-align: center;
-    color: #D35400;
+    color: #c1195c;
     margin-bottom: 20px;
   }
   
@@ -91,7 +91,7 @@ body {
   }
   
   button.btn-cari {
-    background-color: #FEA47F;
+    background-color: #c82667;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -101,12 +101,12 @@ body {
   }
   
   button.btn-cari:hover {
-    background-color: #FF7F50;
+    background-color: #760049;
   }
   
   /* Riwayat Pemeriksaan */
   .riwayat-section {
-    background-color: #FAD7A0;
+    background-color: #f0d4df;
     padding: 20px;
     border-radius: 10px;
     max-width: 500px;
@@ -116,12 +116,13 @@ body {
   
   .riwayat-section h2 {
     text-align: center;
-    color: #D35400;
+    color: #c82667;
     margin-bottom: 20px;
   }
   
   table.riwayat-table {
     width: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
     border-collapse: collapse;
   }
   
@@ -132,12 +133,12 @@ body {
   }
   
   table.riwayat-table th {
-    background-color: #FEA47F;
+    background-color: #c82667;
     color: white;
   }
   
   button.btn-detail {
-    background-color: #FEA47F;
+    background-color: #d45f8e;
     color: white;
     border: none;
     padding: 5px 10px;
@@ -146,7 +147,7 @@ body {
   }
   
   button.btn-detail:hover {
-    background-color: #FF7F50;
+    background-color: #760049;
   }
   
   /* Responsiveness */

@@ -1,30 +1,10 @@
-/* Global Styles */
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #FFFAF0;
-  color: #333;
-}
-
-header {
-  background-color: #f7f7f7;
-  text-align: center;
-  padding: 10px 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-header h1 {
-  font-size: 1.5rem;
-  color: #D35400;
-}
-
 /* Main Content */
 .main-content {
   padding: 20px;
 }
 
 .keluhan-section {
-  background-color: #FAD7A0;
+  background-color: #f0d4df;
   padding: 20px;
   border-radius: 10px;
   max-width: 500px;
@@ -34,7 +14,7 @@ header h1 {
 
 .keluhan-section h2 {
   text-align: center;
-  color: #D35400;
+  color: #c1195c;
   margin-bottom: 20px;
 }
 
@@ -66,13 +46,13 @@ textarea {
 }
 
 textarea:focus {
-  border-color: #FEA47F;
+  border-color: #c1195c;
   outline: none;
   box-shadow: 0 0 5px rgba(254, 164, 127, 0.5);
 }
 
 button.btn-pilih {
-  background-color: #FEA47F;
+  background-color: #c1195c;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -83,7 +63,7 @@ button.btn-pilih {
 }
 
 button.btn-pilih:hover {
-  background-color: #FF7F50;
+  background-color: #760049;
 }
 
 /* Responsiveness */
@@ -95,34 +75,4 @@ button.btn-pilih:hover {
   label, textarea {
     font-size: 0.9rem;
   }
-}
-
-.header-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #FFA07A;
-  padding: 15px 20px;
-  color: white;
-}
-
-.header-container h1 {
-  margin: 0;
-  font-size: 1.6rem;
-}
-
-.btn-back {
-  background-color: #F44336; /* Merah */
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  font-size: 1rem;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-
-.btn-back:hover {
-  background-color: #E53935;
 }
