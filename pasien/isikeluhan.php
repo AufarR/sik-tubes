@@ -28,6 +28,10 @@ if ($_SESSION['role'] != 'pasien') {
     <section class="keluhan-section">
       <h2>Isi Keluhan</h2>
       <form action="proses_pendaftaran.php" method="post" class="keluhan-form">
+      <?php
+      $bookingid = isset($_GET['id']) ? $_GET['id'] : '';
+      ?>
+      <input type="hidden" name="bookingid" value="<?php echo htmlspecialchars($bookingid); ?>">
         <div class="form-group">
           <label for="keluhan">Isi Keluhan Anda</label>
           <textarea id="keluhan" name="keluhan" rows="5" placeholder="Tulis keluhan Anda di sini..." required></textarea>

@@ -11,18 +11,32 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
     header('Location: /pasien');
     exit();
 }
-// Nama variabel yg diperlukan: bookingid, dokterid, pasienid, keluhan
-if (isset($_POST['bookingid'], $_POST['dokterid'], $_POST['pasienid'], $_POST['keluhan']) &&
-    !empty($_POST['bookingid']) && !empty($_POST['dokterid']) && !empty($_POST['pasienid']) && !empty($_POST['keluhan'])) {
+// Nama variabel yg diperlukan: bookingid, keluhan
+if (isset($_POST['bookingid'], $_POST['keluhan']) &&
+    !empty($_POST['bookingid']) && !empty($_POST['keluhan'])) {
 
     $bookingid = $_POST['bookingid'];
-    $dokterid = $_POST['dokterid'];
-    $pasienid = $_POST['pasienid'];
     $keluhan = $_POST['keluhan'];
 
     // Create connection
     include_once("../lib/connection.php");
     $conn = connectDB();
+
+    // Fetch pasienid from pasien table
+    $stmt = $conn->prepare("SELECT id FROM pasien WHERE userid = ?");
+    $stmt->bind_param("i", $_SESSION["userid"]);
+    $stmt->execute();
+    $stmt->bind_result($pasienid);
+    $stmt->fetch();
+    $stmt->close();
+
+    // Fetch dokterid from booking table
+    $stmt = $conn->prepare("SELECT dokterid FROM booking WHERE id = ?");
+    $stmt->bind_param("i", $bookingid);
+    $stmt->execute();
+    $stmt->bind_result($dokterid);
+    $stmt->fetch();
+    $stmt->close();
 
     // Insert to pemeriksaan
     $stmt = $conn->prepare("INSERT INTO pemeriksaan (bookingid, dokterid, pasienid, keluhan) VALUES (?, ?, ?, ?)");
@@ -34,15 +48,9 @@ if (isset($_POST['bookingid'], $_POST['dokterid'], $_POST['pasienid'], $_POST['k
     $stmt2->bind_param("i", $bookingid);
     $stmt2->execute();
 
-    // Close the statement and connection
+    // Close connection
     $stmt->close();
     $stmt2->close();
     $conn->close();
-    
-} else {
-    // Handle missing input
-    http_response_code(400);
 }
-
-header('Location: /pasien');
 ?>
