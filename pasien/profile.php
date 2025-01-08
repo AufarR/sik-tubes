@@ -65,7 +65,7 @@ $conn->close();
           </tr>
           <tr>
             <td>Jenis Kelamin</td>
-            <td><?php echo htmlspecialchars($data['jenis_kelamin']); ?></td>
+            <td><?php echo ($data['jenis_kelamin'] == 'L') ? 'Laki-laki' : 'Perempuan'; ?></td>
           </tr>
           <tr>
             <td>Alamat</td>
