@@ -20,16 +20,32 @@ if ($_SESSION['role'] != 'admin') {
     }
 
     // Fungsi untuk mengarahkan ke halaman Edit dengan parameter data
-    function editData(role, nama, nomor, telepon, email) {
-      const url = `edit.php?role=${role}&nama=${encodeURIComponent(nama)}&nomor=${encodeURIComponent(nomor)}&telepon=${encodeURIComponent(telepon)}&email=${encodeURIComponent(email)}`;
+    function editData(id, role) {
+      const url = `edit.php?id=${id}&role=${role}`;
       window.location.href = url;
     }
 
     // Fungsi untuk menghapus data (simulasi alert)
-    function hapusData(role, nama) {
-      const confirmDelete = confirm(`Apakah Anda yakin ingin menghapus ${role} bernama ${nama}?`);
-      if (confirmDelete) {
-        alert(`${role} bernama ${nama} telah dihapus.`);
+    function hapusData(id, role) {
+      if (confirm('Apakah Anda yakin ingin menghapus data ini?')) {
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = 'proses_hapus.php';
+
+        const inputId = document.createElement('input');
+        inputId.type = 'hidden';
+        inputId.name = 'userid';
+        inputId.value = id;
+        form.appendChild(inputId);
+
+        const inputRole = document.createElement('input');
+        inputRole.type = 'hidden';
+        inputRole.name = 'role';
+        inputRole.value = role; // Sesuaikan dengan role yang sesuai
+        form.appendChild(inputRole);
+
+        document.body.appendChild(form);
+        form.submit();
       }
     }
   </script>
@@ -78,7 +94,7 @@ $sql_pasien = "
               <td>{$row['tgl_lahir']}</td>
               <td>{$row['nik']}</td>
               <td>
-                  <button onclick=\"hapusdata({$row['id']})\" class='btn-hapus'>Hapus</button>
+                  <button onclick=\"hapusdata({$row['userid']},'pasien')\" class='btn-hapus'>Hapus</button>
               </td>
           </tr>";
       }
@@ -126,8 +142,8 @@ $sql_dokter = "
               <td>{$row['no_telp']}</td>
               <td>{$row['email']}</td>
               <td>
-                  <button onclick=\"hapusdata({$row['id']})\" class='btn-edit'>Edit</button>
-                  <button onclick=\"hapusdata({$row['id']})\" class='btn-hapus'>Hapus</button>
+                  <button onclick=\"hapusdata({$row['userid']},'dokter')\" class='btn-edit'>Edit</button>
+                  <button onclick=\"hapusdata({$row['userid']}, 'dokter')\" class='btn-hapus'>Hapus</button>
               </td>
           </tr>";
       }
@@ -137,7 +153,7 @@ $sql_dokter = "
         echo "<p>Data tidak ditemukan.</p>";
     }
 ?>
-      <button class="btn-tambah" onclick="tambahData('Dokter')">Tambah</button>
+      <button class="btn-tambah" onclick="tambahData('dokter')">Tambah</button>
     </section>
 
     <!-- List Perawat -->
@@ -174,8 +190,8 @@ $sql_perawat = "
               <td>{$row['no_telp']}</td>
               <td>{$row['email']}</td>
               <td>
-                  <button onclick=\"hapusdata({$row['id']})\" class='btn-edit'>Edit</button>
-                  <button onclick=\"hapusdata({$row['id']})\" class='btn-hapus'>Hapus</button>
+                  <button onclick=\"hapusdata({$row['userid']},'perawat')\" class='btn-edit'>Edit</button>
+                  <button onclick=\"hapusdata({$row['userid']},'perawat')\" class='btn-hapus'>Hapus</button>
               </td>
           </tr>";
       }
@@ -185,7 +201,7 @@ $sql_perawat = "
         echo "<p>Data tidak ditemukan.</p>";
     }
 ?>
-      <button class="btn-tambah" onclick="tambahData('Perawat')">Tambah</button>
+      <button class="btn-tambah" onclick="tambahData('perawat')">Tambah</button>
     </section>
 
     <!-- List Farmasi -->
@@ -224,8 +240,8 @@ $sql_farmasi = "
               <td>{$row['no_telp']}</td>
               <td>{$row['email']}</td>
               <td>
-                  <button onclick=\"hapusdata({$row['id']})\" class='btn-edit'>Edit</button>
-                  <button onclick=\"hapusdata({$row['id']})\" class='btn-hapus'>Hapus</button>
+                  <button onclick=\"hapusdata({$row['userid']}, 'farmasi')\" class='btn-edit'>Edit</button>
+                  <button onclick=\"hapusdata({$row['userid']}, 'farmasi')\" class='btn-hapus'>Hapus</button>
               </td>
           </tr>";
       }
@@ -235,7 +251,7 @@ $sql_farmasi = "
         echo "<p>Data tidak ditemukan.</p>";
     }
 ?>
-      <button class="btn-tambah" onclick="tambahData('Farmasi')">Tambah</button>
+      <button class="btn-tambah" onclick="tambahData('farmasi')">Tambah</button>
     </section>
   </main>
 </body>

@@ -5,6 +5,43 @@ if ($_SESSION['role'] != 'admin') {
     header('Location: /auth/login.php');
     exit();
 }
+
+// Create connection
+include_once("../lib/connection.php");
+$conn = connectDB();
+
+// Get the role and userid from the GET parameters
+$role = $_GET['role'];
+$userid = $_GET['id'];
+
+// Initialize variables
+$nama = $nid = $no_telp = $email = "";
+
+// Determine the table to query based on the role
+switch ($role) {
+    case 'dokter':
+        $sql = "SELECT nama, sip AS nid, no_telp, email FROM dokter WHERE userid = ?";
+        break;
+    case 'perawat':
+        $sql = "SELECT nama, nik AS nid, no_telp, email FROM perawat WHERE userid = ?";
+        break;
+    case 'farmasi':
+        $sql = "SELECT nama, str AS nid, no_telp, email FROM farmasi WHERE userid = ?";
+        break;
+    default:
+        // Handle invalid role
+        http_response_code(400);
+        exit();
+}
+
+// Prepare and execute the query
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $userid);
+$stmt->execute();
+$stmt->bind_result($nama, $nid, $no_telp, $email);
+$stmt->fetch();
+$stmt->close();
+$conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -14,27 +51,6 @@ if ($_SESSION['role'] != 'admin') {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Edit Data</title>
   <link rel="stylesheet" href="edit.css">
-  <script>
-    // Fungsi untuk mengambil parameter dari URL
-    function getParameterByName(name) {
-      const url = window.location.href;
-      const params = new URLSearchParams(url.split('?')[1]);
-      return params.get(name);
-    }
-
-    // Tampilkan data di form saat halaman dimuat
-    window.onload = function () {
-      const nama = getParameterByName('nama');
-      const nomor = getParameterByName('nomor');
-      const telepon = getParameterByName('telepon');
-      const email = getParameterByName('email');
-
-      if (nama) document.getElementById('nama').value = nama;
-      if (nomor) document.getElementById('nomor').value = nomor;
-      if (telepon) document.getElementById('telepon').value = telepon;
-      if (email) document.getElementById('email').value = email;
-    };
-  </script>
 </head>
 <body>
   <header class="header">
@@ -45,26 +61,34 @@ if ($_SESSION['role'] != 'admin') {
     <section class="form-section">
       <h2>Edit Data</h2>
       <form action="proses_edit.php" method="post" class="edit-form">
+        <input type="hidden" name="userid" value="<?php echo htmlspecialchars($userid); ?>">
+        <div class="form-group">
+          <label for="role">Role</label>
+          <input type="text" id="role" name="role" value="<?php echo htmlspecialchars($role); ?>" readonly>
+        </div>
         <div class="form-group">
           <label for="nama">Nama</label>
-          <input type="text" id="nama" name="nama" placeholder="Masukkan Nama" required>
+          <input type="text" id="nama" name="nama" value="<?php echo htmlspecialchars($nama); ?>" placeholder="Masukkan Nama" required>
         </div>
         <div class="form-group">
-          <label for="nomor">Nomor Identifikasi</label>
-          <input type="text" id="nomor" name="nomor" placeholder="Masukkan Nomor (SIP/STR/NIK)" required>
+          <label for="nid">Nomor Identifikasi</label>
+          <input type="text" id="nid" name="nid" value="<?php echo htmlspecialchars($nid); ?>" placeholder="Masukkan Nomor (SIP/STR/NIK)" required>
         </div>
         <div class="form-group">
-          <label for="telepon">Nomor Telepon</label>
-          <input type="text" id="telepon" name="telepon" placeholder="Masukkan Nomor Telepon" required>
+          <label for="no_telp">Nomor Telepon</label>
+          <input type="text" id="no_telp" name="no_telp" value="<?php echo htmlspecialchars($no_telp); ?>" placeholder="Masukkan Nomor Telepon" required>
         </div>
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="Masukkan Email" required>
+          <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($email); ?>" placeholder="Masukkan Email" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Masukkan Password">
         </div>
         <div class="button-group">
           <button type="submit" class="btn-submit">Simpan</button>
           <button type="button" class="btn-cancel" onclick="window.history.back()">Batal</button>
-        </div>
       </form>
     </section>
   </main>
