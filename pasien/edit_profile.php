@@ -51,14 +51,14 @@ $conn->close();
         </div>
         <div class="form-group">
           <label for="tanggal-lahir">Tanggal Lahir</label>
-          <input type="date" id="tanggal-lahir" name="tanggal-lahir" value=<?php echo $data["tgl_lahir"]?> required>
+          <input type="date" id="tanggal-lahir" name="tgl_lahir" value=<?php echo $data["tgl_lahir"]?> required>
         </div>
         <div class="form-group">
           <label for="jenis-kelamin">Jenis Kelamin</label>
-          <select id="jenis-kelamin" name="jenis-kelamin" required>
-            <option value="Laki-laki" selected>Laki-laki</option>
-            <option value="Perempuan">Perempuan</option>
-          </select>
+            <select id="jenis-kelamin" name="jenis_kelamin" required>
+              <option value="L" <?php echo ($data["jenis_kelamin"] == "L") ? "selected" : ""; ?>>Laki-laki</option>
+              <option value="P" <?php echo ($data["jenis_kelamin"] == "P") ? "selected" : ""; ?>>Perempuan</option>
+            </select>
         </div>
         <div class="form-group">
           <label for="alamat">Alamat</label>
@@ -66,7 +66,7 @@ $conn->close();
         </div>
         <div class="form-group">
           <label for="telepon">No. Telepon</label>
-          <input type="text" id="telepon" name="telepon" value=<?php echo $data["no_telp"]?> required>
+          <input type="text" id="telepon" name="no_telp" value=<?php echo $data["no_telp"]?> required>
         </div>
         <div class="form-group">
           <label for="email">Email</label>
