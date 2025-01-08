@@ -5,6 +5,12 @@ if ($_SESSION['role'] != 'admin') {
     header('Location: /auth/login.php');
     exit();
 }
+// Lempar salah method
+if ($_SERVER["REQUEST_METHOD"] != "POST") {
+    http_response_code(405);
+    header('Location: /admin');
+    exit();
+}
 // Nama2 variabel input: userid (bukan dokterid/pasienid/dsb.), role, nama, nid (nomor identitas: NIK/STR/SIP), no_telp, email, password
 // Klw ada yg dikosongin/ga ada brrt ga diubah tp userid & role wajib yahh
 

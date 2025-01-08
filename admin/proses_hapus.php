@@ -5,11 +5,16 @@ if ($_SESSION['role'] != 'admin') {
     header('Location: /auth/login.php');
     exit();
 }
+// Lempar salah method
+if ($_SERVER["REQUEST_METHOD"] != "POST") {
+    http_response_code(405);
+    header('Location: /admin');
+    exit();
+}
 // Nama2 variabel input: userid (bukan dokterid/pasienid/dsb.), role
 // Create connection
 include_once("../lib/connection.php");
 $conn = connectDB();
-
 switch ($_POST['role']) {
     case 'dokter':
 
