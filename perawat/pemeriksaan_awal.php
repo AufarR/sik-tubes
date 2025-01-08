@@ -86,31 +86,53 @@ $conn->close()
     <section class="form-section">
       <h2>Form Pemeriksaan Awal</h2>
       <form action="proses_pemeriksaan_awal.php" method="post" class="pemeriksaan-form">
-        <div class="form-group">
-          <label for="tensi">Tensi (mmHg)</label>
-          <input type="text" id="tensi" name="tensi" placeholder="Masukkan dalam mmHg (Contoh: 120/80)" required>
-        </div>
-        <div class="form-group">
-          <label for="heart-rate">Heart Rate (bpm)</label>
-          <input type="number" id="heart-rate" name="heart-rate" placeholder="Masukkan dalam bpm" required>
-        </div>
-        <div class="form-group">
-          <label for="tinggi-badan">Tinggi Badan (cm)</label>
-          <input type="number" id="tinggi-badan" name="tinggi-badan" placeholder="Masukkan dalam cm" required>
-        </div>
-        <div class="form-group">
-          <label for="berat-badan">Berat Badan (kg)</label>
-          <input type="number" id="berat-badan" name="berat-badan" placeholder="Masukkan dalam kg" required>
-        </div>
-        <div class="form-group">
-          <label for="suhu">Suhu (°C)</label>
-          <input type="number" step="0.1" id="suhu" name="suhu" placeholder="Masukkan dalam °C" required>
-        </div>
-        <div class="form-group">
-          <button type="submit" class="btn-submit">Simpan</button>
-        </div>
+      <input type="hidden" name="id" value="<?php echo htmlspecialchars($_GET['id']); ?>">
+      <div class="form-group">
+        <label for="tensi">Tensi (mmHg)</label>
+        <input type="text" id="tensi" name="tensi" placeholder="Masukkan dalam mmHg (Contoh: 120/80)" required>
+      </div>
+      <div class="form-group">
+        <label for="heart-rate">Heart Rate (bpm)</label>
+        <input type="number" id="heart-rate" name="heart_rate" placeholder="Masukkan dalam bpm" required>
+      </div>
+      <div class="form-group">
+        <label for="tinggi">Tinggi (cm)</label>
+        <input type="number" id="tinggi" name="tinggi" placeholder="Masukkan dalam cm" required>
+      </div>
+      <div class="form-group">
+        <label for="berat">Berat (kg)</label>
+        <input type="number" id="berat" name="berat" placeholder="Masukkan dalam kg" required>
+      </div>
+      <div class="form-group">
+        <label for="suhu">Suhu (°C)</label>
+        <input type="number" step="0.1" id="suhu" name="suhu" placeholder="Masukkan dalam °C" required>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn-submit">Simpan</button>
+      </div>
       </form>
     </section>
+    <script>
+      document.querySelector('.pemeriksaan-form').addEventListener('submit', function(event) {
+      const tensiInput = document.getElementById('tensi').value.split('/');
+      if (tensiInput.length === 2) {
+        const sistolInput = document.createElement('input');
+        sistolInput.type = 'hidden';
+        sistolInput.name = 'sistol';
+        sistolInput.value = tensiInput[0];
+        this.appendChild(sistolInput);
+
+        const diastolInput = document.createElement('input');
+        diastolInput.type = 'hidden';
+        diastolInput.name = 'diastol';
+        diastolInput.value = tensiInput[1];
+        this.appendChild(diastolInput);
+      } else {
+        event.preventDefault();
+        alert('Format tensi tidak valid. Gunakan format mmHg (Contoh: 120/80).');
+      }
+      });
+    </script>
   </main>
 </body>
 </html>
