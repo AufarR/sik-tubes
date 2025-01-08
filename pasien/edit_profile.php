@@ -40,18 +40,18 @@ $conn->close();
     <section class="edit-profile-section">
       <h2>Edit Data Diri Pasien</h2>
       <form action="proses_edit_profile.php" method="post" class="edit-profile-form">
-        <input type="hidden" name="id" value=<?php echo $data["id"]?>>
+        <input type="hidden" name="id" value="<?php echo $data["id"]?>">
         <div class="form-group">
           <label for="nama">Nama</label>
-          <input type="text" id="nama" name="nama" value=<?php echo $data["nama"]?> required>
+          <input type="text" id="nama" name="nama" value="<?php echo $data["nama"]?>" required>
         </div>
         <div class="form-group">
           <label for="nik">NIK</label>
-          <input type="text" id="nik" name="nik" value=<?php echo $data["nik"]?> required>
+          <input type="text" id="nik" name="nik" value="<?php echo $data["nik"]?>" required>
         </div>
         <div class="form-group">
           <label for="tanggal-lahir">Tanggal Lahir</label>
-          <input type="date" id="tanggal-lahir" name="tgl_lahir" value=<?php echo $data["tgl_lahir"]?> required>
+          <input type="date" id="tanggal-lahir" name="tgl_lahir" value="<?php echo $data["tgl_lahir"]?>" required>
         </div>
         <div class="form-group">
           <label for="jenis-kelamin">Jenis Kelamin</label>
@@ -66,11 +66,11 @@ $conn->close();
         </div>
         <div class="form-group">
           <label for="telepon">No. Telepon</label>
-          <input type="text" id="telepon" name="no_telp" value=<?php echo $data["no_telp"]?> required>
+          <input type="text" id="telepon" name="no_telp" value="<?php echo $data["no_telp"]?>" required>
         </div>
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" id="email" name="email" value=<?php echo $data["email"]?> required>
+          <input type="email" id="email" name="email" value="<?php echo $data["email"]?>" required>
         </div>
         <div class="form-group">
           <label for="password">Password</label>
