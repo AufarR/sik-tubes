@@ -3,6 +3,7 @@
 session_start();
 if ($_SESSION['role'] != 'pasien') {
     header('Location: /auth/login.php');
+    exit();
 }
 ?>
 
