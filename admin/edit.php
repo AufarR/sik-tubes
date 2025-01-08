@@ -51,10 +51,15 @@ $conn->close();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Edit Data</title>
   <link rel="stylesheet" href="edit.css">
+  <link rel="stylesheet" href="admin.css">
 </head>
 <body>
   <header class="header">
-    <h1>Cinta Kasih Satu Hati - Edit Data</h1>
+  <h1>Puskesmas Cinta Kasih Satu Hati</h1>
+    <div class="header-buttons">
+      <button class="btn-profile" onclick="history.back()">Back</button>
+      <button class="btn-logout" onclick="location.href='/auth/logout.php'">Logout</button>
+    </div>
   </header>
 
   <main class="main-content">
@@ -84,7 +89,8 @@ $conn->close();
         </div>
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" id="password" name="password" placeholder="Masukkan Password">
+          <input type="password" id="password" name="password" placeholder="Masukkan Password" required>
+        </div>
         </div>
         <div class="button-group">
           <button type="submit" class="btn-submit">Simpan</button>
