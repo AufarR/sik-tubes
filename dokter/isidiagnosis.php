@@ -107,6 +107,53 @@ $conn->close()
       return params.get(name);
     }
 
+    function submitForm() {
+      const form = document.querySelector('.diagnosis-form');
+      const id = getParameterByName('id');
+      const diagnosisElements = document.querySelectorAll('#tabel-ICD select');
+      const obatElements = document.querySelectorAll('#tabel-obat select');
+      const dosisElements = document.querySelectorAll('#tabel-obat .dosis-input');
+
+      let diagnosis = '';
+      diagnosisElements.forEach((element, index) => {
+        if (element.value) {
+          diagnosis += element.value.trim();
+          if (index < diagnosisElements.length - 1) {
+            diagnosis += ';';
+          }
+        }
+      });
+
+      let obat = '';
+      obatElements.forEach((element, index) => {
+        if (element.value) {
+          obat += element.value.trim() + ' ' + dosisElements[index].value.trim();
+          if (index < obatElements.length - 1) {
+            obat += ';';
+          }
+        }
+      });
+
+      const hiddenIdInput = document.createElement('input');
+      hiddenIdInput.type = 'hidden';
+      hiddenIdInput.name = 'id';
+      hiddenIdInput.value = id;
+      form.appendChild(hiddenIdInput);
+
+      const hiddenDiagnosisInput = document.createElement('input');
+      hiddenDiagnosisInput.type = 'hidden';
+      hiddenDiagnosisInput.name = 'diagnosis';
+      hiddenDiagnosisInput.value = diagnosis;
+      form.appendChild(hiddenDiagnosisInput);
+
+      const hiddenObatInput = document.createElement('input');
+      hiddenObatInput.type = 'hidden';
+      hiddenObatInput.name = 'obat';
+      hiddenObatInput.value = obat;
+      form.appendChild(hiddenObatInput);
+
+      form.submit();
+    }
   </script>
 </head>
 <body>
@@ -198,7 +245,7 @@ $conn->close()
     <!-- Form Diagnosis -->
     <section class="form-section">
       <h2>Form Diagnosis</h2>
-      <form action="proses_diagnosis.php" method="post" class="diagnosis-form">
+      <form action="proses_diagnosis.php" method="post" class="diagnosis-form" onsubmit="event.preventDefault(); submitForm();">
         <!-- Kode ICD -->
         <div class="form-group">
           <table id="tabel-ICD">
