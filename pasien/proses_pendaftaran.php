@@ -11,6 +11,10 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
     header('Location: /pasien');
     exit();
 }
+// Decode all POST data
+foreach ($_POST as $key => $value) {
+    $_POST[$key] = urldecode($value);
+}
 // Nama variabel yg diperlukan: bookingid, keluhan
 if (isset($_POST['bookingid'], $_POST['keluhan']) &&
     !empty($_POST['bookingid']) && !empty($_POST['keluhan'])) {
@@ -39,7 +43,7 @@ if (isset($_POST['bookingid'], $_POST['keluhan']) &&
     $stmt->close();
 
     // Insert to pemeriksaan
-    $stmt = $conn->prepare("INSERT INTO pemeriksaan (bookingid, dokterid, pasienid, keluhan) VALUES (?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO pemeriksaan (bookingid, dokterid, pasienid, keluhan, status) VALUES (?, ?, ?, ?, 0)");
     $stmt->bind_param("iiis", $bookingid, $dokterid, $pasienid, $keluhan);
     $stmt->execute();
 
@@ -53,4 +57,5 @@ if (isset($_POST['bookingid'], $_POST['keluhan']) &&
     $stmt2->close();
     $conn->close();
 }
+header('Location: /pasien');
 ?>
