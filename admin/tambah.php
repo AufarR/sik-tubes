@@ -41,7 +41,7 @@ if ($_SESSION['role'] != 'admin') {
         </div>
         <div class="button-group">
           <button type="submit" class="btn-submit">Simpan</button>
-          <button type="button" class="btn-cancel" onclick="window.location.href='admin.html';">Batal</button>
+          <button type="button" class="btn-cancel" onclick="window.history.back();">Batal</button>
         </div>
       </form>
     </section>
