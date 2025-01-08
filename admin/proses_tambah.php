@@ -32,7 +32,8 @@ switch ($_POST['role']) {
             
             $sqlInsert = "INSERT INTO dokter (nama, sip, no_telp, email, userid) VALUES (?, ?, ?, ?, ?)";
             $stmtInsert = $conn->prepare($sqlInsert);
-            $stmtInsert->bind_param("ssssi", $_POST['nama'], $_POST['nid'], $_POST['no_telp'], $_POST['email'], $stmtUser->insert_id);
+            $userid = $stmtUser->insert_id;
+            $stmtInsert->bind_param("ssssi", $_POST['nama'], $_POST['nid'], $_POST['no_telp'], $_POST['email'], $userid);
             $stmtInsert->execute();
 
             $stmtUser->close();
@@ -55,7 +56,8 @@ switch ($_POST['role']) {
             
             $sqlInsert = "INSERT INTO farmasi (nama, str, no_telp, email, userid) VALUES (?, ?, ?, ?, ?)";
             $stmtInsert = $conn->prepare($sqlInsert);
-            $stmtInsert->bind_param("ssssi", $_POST['nama'], $_POST['nid'], $_POST['no_telp'], $_POST['email'], $stmtUser->insert_id);
+            $userid = $stmtUser->insert_id;
+            $stmtInsert->bind_param("ssssi", $_POST['nama'], $_POST['nid'], $_POST['no_telp'], $_POST['email'], $userid);
             $stmtInsert->execute();
 
             $stmtUser->close();
@@ -78,7 +80,8 @@ switch ($_POST['role']) {
             
             $sqlInsert = "INSERT INTO perawat (nama, nik,  no_telp, email, userid) VALUES (?, ?, ?, ?, ?)";
             $stmtInsert = $conn->prepare($sqlInsert);
-            $stmtInsert->bind_param("ssssi", $_POST['nama'], $_POST["nid"], $_POST['no_telp'], $_POST['email'], $stmtUser->insert_id);
+            $userid = $stmtUser->insert_id;
+            $stmtInsert->bind_param("ssssi", $_POST['nama'], $_POST['nid'], $_POST['no_telp'], $_POST['email'], $userid);
             $stmtInsert->execute();
 
             $stmtUser->close();

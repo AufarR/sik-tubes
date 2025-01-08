@@ -25,9 +25,9 @@
       <div class="form-group">
         <label for="jenis_kelamin">Jenis Kelamin</label>
         <select id="jenis_kelamin" name="jenis_kelamin" required>
-          <option value="">Pilih Jenis Kelamin</option>
-          <option value="laki-laki">Laki-laki</option>
-          <option value="perempuan">Perempuan</option>
+          <option value="" selected disabled>Pilih Jenis Kelamin</option>
+          <option value="L">Laki-laki</option>
+          <option value="P">Perempuan</option>
         </select>
       </div>
       <div class="form-group">
