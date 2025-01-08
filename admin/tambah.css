@@ -1,13 +1,10 @@
 /* Main Content */
 .main-content {
-  background-color: #f0d4df;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 400px;
-  align-items: center;
-  margin-top: 20px;
-  margin-bottom: 20px; /* Tambahkan jarak antara header dan konten utama */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  padding: 30px 20px;
 }
 
 .main-content .form-section h2 {
@@ -20,6 +17,15 @@
 .form-group {
   margin-bottom: 15px;
 }
+
+/* Form Container */
+.form-section {
+  background-color: #f0d4df;
+  padding: 30px 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  }
 
 label {
   display: block;
