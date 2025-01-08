@@ -73,7 +73,8 @@ switch ($_POST['role']) {
         if (isset($_POST['password']) && !empty($_POST['password'])) {
             $sqlUpdate = "UPDATE kredensial SET password = ? WHERE userid = ?";
             $stmtUpdate = $conn->prepare($sqlUpdate);
-            $stmtUpdate->bind_param("si", $_POST['password'], $_POST['userid']);
+            $hashedPassword = hash('sha256', $_POST['password']);
+            $stmtUpdate->bind_param("si", $hashedPassword, $_POST['userid']);
             $stmtUpdate->execute();
             $stmtUpdate->close();
         }
@@ -127,7 +128,8 @@ switch ($_POST['role']) {
         if (isset($_POST['password']) && !empty($_POST['password'])) {
             $sqlUpdate = "UPDATE kredensial SET password = ? WHERE userid = ?";
             $stmtUpdate = $conn->prepare($sqlUpdate);
-            $stmtUpdate->bind_param("si", $_POST['password'], $_POST['userid']);
+            $hashedPassword = hash('sha256', $_POST['password']);
+            $stmtUpdate->bind_param("si", $hashedPassword, $_POST['userid']);
             $stmtUpdate->execute();
             $stmtUpdate->close();
         }
@@ -181,7 +183,8 @@ switch ($_POST['role']) {
         if (isset($_POST['password']) && !empty($_POST['password'])) {
             $sqlUpdate = "UPDATE kredensial SET password = ? WHERE userid = ?";
             $stmtUpdate = $conn->prepare($sqlUpdate);
-            $stmtUpdate->bind_param("si", $_POST['password'], $_POST['userid']);
+            $hashedPassword = hash('sha256', $_POST['password']);
+            $stmtUpdate->bind_param("si", $hashedPassword, $_POST['userid']);
             $stmtUpdate->execute();
             $stmtUpdate->close();
         }
