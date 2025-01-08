@@ -35,18 +35,42 @@
     </div>
     <div class="info-card">
       <h3>Jadwal Dokter</h3>
-      <p>Untuk mengetahui jadwal praktik dokter, silahkan klik tombol dibawah ini</p>
-      <button class="btn-secondary" onclick="lihatJadwalDokter()">Lihat Jadwal Dokter</button>
+      <table>
+        <thead>
+          <tr>
+            <th>Nama Dokter</th>
+            <th>Hari</th>
+            <th>Jam</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Dokter A</td>
+            <td>Senin - Jumat</td>
+            <td>08:00 - 15:59</td>
+          </tr>
+          <tr>
+            <td>Dokter B</td>
+            <td>Senin - Jumat</td>
+            <td>16:00 - 19:59</td>
+          </tr>
+          <tr>
+            <td>Dokter B</td>
+            <td>Sabtu - Minggu</td>
+            <td>09:00 - 14:59</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     <div class="info-card">
-      <h3>RSIA Grha Bunda</h3>
+      <h3>Kontak kami</h3>
       <p><strong>Alamat</strong> - Bandung</p>
       <p><strong>Telepon</strong> - 022-872 56789</p>
       <p><strong>Whatsapp</strong> - +62811056789</p>
       <p><strong>Instagram</strong> - @ebebeb</p>
     </div>
     <div class="info-card">
-      <h3>Halo Grabun!</h3>
+      <h3>Halo Ebebeb!</h3>
       <p>📞 022-87256789</p>
       <p>Silakan menghubungi nomor Halo Grabun! untuk memperoleh informasi terkini</p>
     </div>
