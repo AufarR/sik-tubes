@@ -5,6 +5,22 @@ if ($_SESSION['role'] != 'pasien') {
     header('Location: /auth/login.php');
     exit();
 }
+// Create connection
+include_once("../lib/connection.php");
+$conn = connectDB();
+
+// Ambil data riwayat pemeriksaan berdasarkan user ID
+$sql = "SELECT *
+        FROM pasien
+        WHERE userid = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $_SESSION["userid"]);
+$stmt->execute();
+$result = $stmt->get_result();
+$data = $result->fetch_assoc();
+
+$stmt->close();
+$conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -24,17 +40,18 @@ if ($_SESSION['role'] != 'pasien') {
     <section class="edit-profile-section">
       <h2>Edit Data Diri Pasien</h2>
       <form action="proses_edit_profile.php" method="post" class="edit-profile-form">
+        <input type="hidden" name="id" value=<?php echo $data["id"]?>>
         <div class="form-group">
           <label for="nama">Nama</label>
-          <input type="text" id="nama" name="nama" value="John Doe" required>
+          <input type="text" id="nama" name="nama" value=<?php echo $data["nama"]?> required>
         </div>
         <div class="form-group">
           <label for="nik">NIK</label>
-          <input type="text" id="nik" name="nik" value="1234567890123456" required>
+          <input type="text" id="nik" name="nik" value=<?php echo $data["nik"]?> required>
         </div>
         <div class="form-group">
           <label for="tanggal-lahir">Tanggal Lahir</label>
-          <input type="date" id="tanggal-lahir" name="tanggal-lahir" value="1990-01-01" required>
+          <input type="date" id="tanggal-lahir" name="tanggal-lahir" value=<?php echo $data["tgl_lahir"]?> required>
         </div>
         <div class="form-group">
           <label for="jenis-kelamin">Jenis Kelamin</label>
@@ -45,15 +62,15 @@ if ($_SESSION['role'] != 'pasien') {
         </div>
         <div class="form-group">
           <label for="alamat">Alamat</label>
-          <textarea id="alamat" name="alamat" rows="3" required>Jl. Mawar No. 123</textarea>
+          <textarea id="alamat" name="alamat" rows="3" required><?php echo $data["alamat"]?></textarea>
         </div>
         <div class="form-group">
           <label for="telepon">No. Telepon</label>
-          <input type="text" id="telepon" name="telepon" value="08123456789" required>
+          <input type="text" id="telepon" name="telepon" value=<?php echo $data["no_telp"]?> required>
         </div>
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" id="email" name="email" value="johndoe@example.com" required>
+          <input type="email" id="email" name="email" value=<?php echo $data["email"]?> required>
         </div>
         <div class="button-group">
           <button type="submit" class="btn-save">Simpan</button>
