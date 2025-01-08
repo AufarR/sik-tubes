@@ -89,7 +89,7 @@ $conn->close();
         </div>
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" id="password" name="password" placeholder="Masukkan Password" required>
+          <input type="password" id="password" name="password" placeholder="Masukkan Password Baru">
         </div>
         </div>
         <div class="button-group">

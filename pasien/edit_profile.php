@@ -74,7 +74,7 @@ $conn->close();
         </div>
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" id="password" name="password" required>
+          <input type="password" id="password" name="password" placeholder="Masukkan Password Baru">
         <div class="button-group">
           <button type="submit" class="btn-save">Simpan</button>
           <button type="button" class="btn-cancel" onclick="window.history.back()">Batal</button>
