@@ -38,7 +38,7 @@ if (isset($_POST['id'], $_POST['diagnosis'], $_POST['obat']) &&
     $conn = connectDB();
 
     // Prepare and bind
-    $stmt = $conn->prepare("UPDATE pemeriksaan SET diagnosis = ?, obat = ?, catatan = ? WHERE id = ?");
+    $stmt = $conn->prepare("UPDATE pemeriksaan SET status = 2, diagnosis = ?, obat = ?, catatan = ? WHERE id = ?");
     $stmt->bind_param("sssi", $diagnosis, $obat, $catatan, $id);
     $stmt->execute();
 

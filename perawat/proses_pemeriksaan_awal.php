@@ -35,7 +35,7 @@ if (isset($_POST['id'], $_POST['sistol'], $_POST['diastol'], $_POST['heart_rate'
     $conn = connectDB();
 
     // Prepare and bind
-    $stmt = $conn->prepare("UPDATE pemeriksaan SET sistol = ?, diastol = ?, heart_rate = ?, tinggi = ?, berat = ?, suhu = ? WHERE id = ?");
+    $stmt = $conn->prepare("UPDATE pemeriksaan SET status = 1, sistol = ?, diastol = ?, heart_rate = ?, tinggi = ?, berat = ?, suhu = ? WHERE id = ?");
     $stmt->bind_param("iiidddi", $sistol, $diastol, $heart_rate, $tinggi, $berat, $suhu, $id);
     $stmt->execute();
 
