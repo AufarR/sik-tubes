@@ -142,6 +142,14 @@ switch ($_POST['role']) {
             $stmtUpdate->close();
         }
 
+        if (isset($_POST['nid']) && !empty($_POST['nid'])) {
+            $sqlUpdate = "UPDATE perawat SET nik = ? WHERE userid = ?";
+            $stmtUpdate = $conn->prepare($sqlUpdate);
+            $stmtUpdate->bind_param("si", $_POST['nid'], $_POST['userid']);
+            $stmtUpdate->execute();
+            $stmtUpdate->close();
+        }
+
         if (isset($_POST['no_telp']) && !empty($_POST['no_telp'])) {
             $sqlUpdate = "UPDATE perawat SET no_telp = ? WHERE userid = ?";
             $stmtUpdate = $conn->prepare($sqlUpdate);

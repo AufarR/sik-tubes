@@ -76,9 +76,9 @@ switch ($_POST['role']) {
             $stmtUser->bind_param("ss", $_POST['email'], $hashedPassword);
             $stmtUser->execute();
             
-            $sqlInsert = "INSERT INTO perawat (nama, no_telp, email, userid) VALUES (?, ?, ?, ?)";
+            $sqlInsert = "INSERT INTO perawat (nama, nik,  no_telp, email, userid) VALUES (?, ?, ?, ?, ?)";
             $stmtInsert = $conn->prepare($sqlInsert);
-            $stmtInsert->bind_param("sssi", $_POST['nama'], $_POST['no_telp'], $_POST['email'], $stmtUser->insert_id);
+            $stmtInsert->bind_param("ssssi", $_POST['nama'], $_POST["nid"], $_POST['no_telp'], $_POST['email'], $stmtUser->insert_id);
             $stmtInsert->execute();
 
             $stmtUser->close();

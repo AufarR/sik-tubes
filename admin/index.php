@@ -94,7 +94,7 @@ $sql_pasien = "
               <td>{$row['tgl_lahir']}</td>
               <td>{$row['nik']}</td>
               <td>
-                  <button onclick=\"hapusdata({$row['userid']},'pasien')\" class='btn-hapus'>Hapus</button>
+                  <button onclick=\"hapusData({$row['userid']},'pasien')\" class='btn-hapus'>Hapus</button>
               </td>
           </tr>";
       }
@@ -142,8 +142,8 @@ $sql_dokter = "
               <td>{$row['no_telp']}</td>
               <td>{$row['email']}</td>
               <td>
-                  <button onclick=\"hapusdata({$row['userid']},'dokter')\" class='btn-edit'>Edit</button>
-                  <button onclick=\"hapusdata({$row['userid']}, 'dokter')\" class='btn-hapus'>Hapus</button>
+                  <button onclick=\"editData({$row['userid']},'dokter')\" class='btn-edit'>Edit</button>
+                  <button onclick=\"hapusData({$row['userid']}, 'dokter')\" class='btn-hapus'>Hapus</button>
               </td>
           </tr>";
       }
@@ -177,6 +177,7 @@ $sql_perawat = "
       echo "<table class='data-table'>"; // Gunakan kelas untuk styling tabel
       echo "<thead><tr>
             <th>Nama</th>
+            <th>NIK</th>
             <th>Nomor Telepon</th>
             <th>Email</th>
             <th>Aksi</th>
@@ -187,11 +188,12 @@ $sql_perawat = "
           // Tampilkan data dalam tabel
           echo "<tr>
               <td>{$row['nama']}</td>
+              <td>{$row['nik']}</td>
               <td>{$row['no_telp']}</td>
               <td>{$row['email']}</td>
               <td>
-                  <button onclick=\"hapusdata({$row['userid']},'perawat')\" class='btn-edit'>Edit</button>
-                  <button onclick=\"hapusdata({$row['userid']},'perawat')\" class='btn-hapus'>Hapus</button>
+                  <button onclick=\"editData({$row['userid']},'perawat')\" class='btn-edit'>Edit</button>
+                  <button onclick=\"hapusData({$row['userid']},'perawat')\" class='btn-hapus'>Hapus</button>
               </td>
           </tr>";
       }
@@ -240,8 +242,8 @@ $sql_farmasi = "
               <td>{$row['no_telp']}</td>
               <td>{$row['email']}</td>
               <td>
-                  <button onclick=\"hapusdata({$row['userid']}, 'farmasi')\" class='btn-edit'>Edit</button>
-                  <button onclick=\"hapusdata({$row['userid']}, 'farmasi')\" class='btn-hapus'>Hapus</button>
+                  <button onclick=\"editData({$row['userid']}, 'farmasi')\" class='btn-edit'>Edit</button>
+                  <button onclick=\"hapusData({$row['userid']}, 'farmasi')\" class='btn-hapus'>Hapus</button>
               </td>
           </tr>";
       }
