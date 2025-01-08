@@ -72,6 +72,9 @@ $conn->close();
           <label for="email">Email</label>
           <input type="email" id="email" name="email" value=<?php echo $data["email"]?> required>
         </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required>
         <div class="button-group">
           <button type="submit" class="btn-save">Simpan</button>
           <button type="button" class="btn-cancel" onclick="window.history.back()">Batal</button>
