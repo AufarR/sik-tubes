@@ -27,11 +27,20 @@ if ($_SESSION['role'] != 'farmasi') {
     }
 
     // Fungsi untuk menghapus obat dari tabel
-    function hapusObat(row) {
+    function hapusObat(id) {
       if (confirm("Apakah Anda yakin ingin menghapus obat ini?")) {
-        const table = document.getElementById("tabel-obat");
-        table.deleteRow(row.parentNode.parentNode.rowIndex);
-        alert("Obat berhasil dihapus!");
+      const form = document.createElement("form");
+      form.method = "POST";
+      form.action = "proses_hapus_obat.php";
+
+      const input = document.createElement("input");
+      input.type = "hidden";
+      input.name = "id";
+      input.value = id;
+
+      form.appendChild(input);
+      document.body.appendChild(form);
+      form.submit();
       }
     }
 
