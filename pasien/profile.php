@@ -5,6 +5,22 @@ if ($_SESSION['role'] != 'pasien') {
     header('Location: /auth/login.php');
     exit();
 }
+// Create connection
+include_once("../lib/connection.php");
+$conn = connectDB();
+
+// Ambil data riwayat pemeriksaan berdasarkan user ID
+$sql = "SELECT *
+        FROM pasien
+        WHERE userid = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $_SESSION["userid"]);
+$stmt->execute();
+$result = $stmt->get_result();
+$data = $result->fetch_assoc();
+
+$stmt->close();
+$conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -37,31 +53,31 @@ if ($_SESSION['role'] != 'pasien') {
           </tr>
           <tr>
             <td>Nama</td>
-            <td>John Doe</td>
+            <td><?php echo htmlspecialchars($data['nama']); ?></td>
           </tr>
           <tr>
             <td>NIK</td>
-            <td>1234567890123456</td>
+            <td><?php echo htmlspecialchars($data['nik']); ?></td>
           </tr>
           <tr>
             <td>Tanggal Lahir</td>
-            <td>1 Januari 1990</td>
+            <td><?php echo htmlspecialchars($data['tgl_lahir']); ?></td>
           </tr>
           <tr>
             <td>Jenis Kelamin</td>
-            <td>Laki-laki</td>
+            <td><?php echo htmlspecialchars($data['jenis_kelamin']); ?></td>
           </tr>
           <tr>
             <td>Alamat</td>
-            <td>Jl. Mawar No. 123</td>
+            <td><?php echo htmlspecialchars($data['alamat']); ?></td>
           </tr>
           <tr>
             <td>No. Telepon</td>
-            <td>08123456789</td>
+            <td><?php echo htmlspecialchars($data['no_telp']); ?></td>
           </tr>
           <tr>
             <td>Email</td>
-            <td>johndoe@example.com</td>
+            <td><?php echo htmlspecialchars($data['email']); ?></td>
           </tr>
         </table>
         <button class="btn-edit" onclick="location.href='edit_profile.php'">Edit</button>
