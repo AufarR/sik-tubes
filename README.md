@@ -12,7 +12,7 @@ Integrasi layanan kesehatan di Puskesmas
 - Pengisian hasil pemeriksaan
 - Manajemen farmasi dan resep obat
 ## Skema elemen data
-![Skema basis data manajemen informasi Puskesmas](db_schema.png)
+![Skema basis data manajemen informasi Puskesmas](db_schema.jpg)
 ## Kontributor
 - 18321005 Wida Inaya Sekar Helia
 - 18321014 Maulida Adhifa Naila Muthi
