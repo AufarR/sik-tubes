@@ -5,6 +5,12 @@ if ($_SESSION['role'] != 'dokter') {
     header('Location: /auth/login.php');
     exit();
 }
+// Lempar salah method
+if ($_SERVER["REQUEST_METHOD"] != "POST") {
+    http_response_code(405);
+    header('Location: /dokter');
+    exit();
+}
 /* Nama2 variabel input:
     - id (id pemeriksaan)
     - diagnosis (string panjang isinya kode2 ICD digabungin jd satu string dipisah titik koma ";". Beda2 spasi dikit gapapa
@@ -12,26 +18,32 @@ if ($_SESSION['role'] != 'dokter') {
     - obat (daftar obat dipisah titik koma ";" mirip diagnosis)
     - catatan (string catatan)
 */
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+if (isset($_POST['id'], $_POST['diagnosis'], $_POST['obat']) &&
+    !empty($_POST['id']) && !empty($_POST['diagnosis']) &&
+    !empty($_POST['obat'])) {
+
+    $id = $_POST['id'];
+    $diagnosis = $_POST['diagnosis'];
+    $obat = $_POST['obat'];
+    $catatan = isset($_POST['catatan']) ? $_POST['catatan'] : '';
 
     // Create connection
     include_once("../lib/connection.php");
     $conn = connectDB();
 
-    // Add to credentials table
-    $stmt = $conn->prepare("INSERT INTO kredensial (username, password, role) VALUES (?, ?,'pasien')");
-    $stmt->bind_param("ss", $_POST["email"], hash('sha256', $_POST["password"]));
+    // Prepare and bind
+    $stmt = $conn->prepare("UPDATE pemeriksaan SET diagnosis = ?, obat = ?, catatan = ? WHERE id = ?");
+    $stmt->bind_param("sssi", $diagnosis, $obat, $catatan, $id);
     $stmt->execute();
 
-    // Add to users table
-    $stmt2 = $conn->prepare("INSERT INTO pasien (nik, nama, tgl_lahir, jenis_kelamin, alamat, no_telp, email, userId) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt2->bind_param("sssssssi", $_POST["nik"], $_POST["nama"], $_POST["tgl_lahir"], $_POST["jenis_kelamin"], $_POST["alamat"], $_POST["no_telp"], $_POST["email"], $stmt->insert_id);
-    $stmt2->execute();
-
+    // Close the statement and connection
     $stmt->close();
-    $stmt2->close();
-
     $conn->close();
+    
+} else {
+    // Handle missing input
+    http_response_code(400);
 }
-header('Location: /auth/login.php');
+
+header('Location: /dokter');
 ?>
