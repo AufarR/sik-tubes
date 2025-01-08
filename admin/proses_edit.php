@@ -82,7 +82,7 @@ switch ($_POST['role']) {
         break;
     case 'farmasi':
         
-        if (!isset($_POST['userid']) || !empty($_POST['userid'])) {
+        if (!isset($_POST['userid']) || empty($_POST['userid'])) {
             http_response_code(400);
             break;
         }
@@ -137,7 +137,7 @@ switch ($_POST['role']) {
         break;
     case 'perawat':
         
-        if (!isset($_POST['userid']) || !empty($_POST['userid'])) {
+        if (!isset($_POST['userid']) || empty($_POST['userid'])) {
             http_response_code(400);
             break;
         }
